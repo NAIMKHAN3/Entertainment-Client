@@ -32,8 +32,8 @@ const Signin = () => {
         <FormInput type='email' name='email' lebel='Your Email' placeholder='email' />
         <FormInput type='password' name='password' lebel='Your password' placeholder='password' />
        
-        <h1 className='text-center'>New to Entertainment Website please <span className='text-blue-600'><Link href="/signup">signup</Link></span> </h1>
-        <button className='w-full bg-indigo-600 my-5 text-white py-1 rounded-md' type="submit">Signin</button>
+        <h1 className='text-center'>New to Entertainment Website please <span className='text-[#00246a]'><Link href="/signup">signup</Link></span> </h1>
+        <button className='w-full bg-[#00246a] my-5 text-white py-1 rounded-md' type="submit">Signin</button>
       </form>
     </div>
   );
