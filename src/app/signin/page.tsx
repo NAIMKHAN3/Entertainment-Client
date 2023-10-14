@@ -1,12 +1,14 @@
 "use client"
 import FormInput from '@/components/FormInput';
 import { useUserLoginMutation, useUserRegMutation } from '@/redux/feature/auth/authApi';
+import { userAdded } from '@/redux/feature/auth/authSlice';
 import { useAppDispatch } from '@/redux/hooks/hooks';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { useState } from 'react';
 import { useForm, SubmitHandler, Controller } from "react-hook-form"
 import toast, { Toaster } from 'react-hot-toast';
+import { useDispatch } from 'react-redux';
 
 
 type Inputs = {
@@ -18,6 +20,7 @@ type Inputs = {
 }
 const Signin = () => {
 const [userLogin] = useUserLoginMutation();
+const dispatch = useDispatch()
 const router = useRouter();
   const { control, register, handleSubmit, watch, formState: { errors }, setValue } = useForm<Inputs>();
   const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -28,6 +31,7 @@ const router = useRouter();
         toast.success('Signin Success',{id: 'Signin'})
         localStorage.setItem('user', JSON.stringify(result.data))
         localStorage.setItem('token', JSON.stringify(result.accessToken))
+        dispatch(userAdded(result.data))
         router.push('/')
       }
      

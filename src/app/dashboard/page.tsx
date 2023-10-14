@@ -1,11 +1,11 @@
+"use client"
+import { useRouter } from 'next/navigation';
 import React from 'react';
 
 const Dashboard = () => {
-    return (
-        <div>
-            this is dashbord page
-        </div>
-    );
+
+   const router = useRouter();
+   router.push('/dashboard/profile')
 };
 
 export default Dashboard;

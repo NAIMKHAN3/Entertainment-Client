@@ -1,8 +1,8 @@
 import React from 'react';
 
-const List = ({ children }: {children: React.ReactNode} ) => {
+const List = ({className, children }: {children?: React.ReactNode, className?: string} ) => {
     return (
-        <li className='mr-4 font-semibold hover:text-[#00246a] duration-200'>
+        <li className={`pr-4 font-semibold hover:text-[#00246a] duration-200 ${className}`}>
             {children}
         </li>
     );

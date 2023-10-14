@@ -3,10 +3,9 @@ import { Toaster } from 'react-hot-toast'
 
 export default function Home() {
   return (
-   <div>
-    <Toaster/>
-
-    <h1 className='text-4xl font-semibold text-red-600'>Entertainment movie website</h1>
-   </div>
+    <div>
+      <Toaster />
+      <h1>This is App page</h1>
+    </div>
   )
 }

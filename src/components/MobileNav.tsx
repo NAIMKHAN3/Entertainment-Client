@@ -10,16 +10,16 @@ import { useState } from 'react';
 import Heading from './Heading';
 import Paragraph from './Paragraph';
 import Link from 'next/link';
+import { useAppSelector } from '@/redux/hooks/hooks';
 
 
 const MobileNavbar = () => {
-    // const { email } = useAppSelector(state => state.user)
+    const { email } = useAppSelector(state => state.auth)
     // const dispatch = useAppDispatch()
     const handleLogout = () => {
         // dispatch(removeUser())
     }
     const [isOpen, setIsOpen] = useState(false);
-    const email = null
 
 
     const toggleIsOpen = () => {
