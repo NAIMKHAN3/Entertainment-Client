@@ -31,11 +31,21 @@ const authSlice = createSlice({
         state.contactNo = action.payload.contactNo;
         state.role = action.payload.role;
         console.log({state})
+      },
+      removeUser : (state) => {
+        state.name = null;
+        state.email = null;
+        state.profileImg = null;
+        state.address = null;
+        state.role = null;
+        localStorage.removeItem('user')
+        localStorage.removeItem('token')
+
       }
     },
   })
   
-  export const { userAdded } = authSlice.actions;
+  export const { userAdded, removeUser } = authSlice.actions;
   
 
   

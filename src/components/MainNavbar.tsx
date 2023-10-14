@@ -4,7 +4,7 @@ import List from './List';
 import Link from 'next/link';
 import MobileNavbar from './MobileNav';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
-import { userAdded } from '@/redux/feature/auth/authSlice';
+import { removeUser, userAdded } from '@/redux/feature/auth/authSlice';
 import { getInfoToLocal } from '@/share';
 
 const MainNavbar = () => {
@@ -14,6 +14,9 @@ const MainNavbar = () => {
     console.log(userInfo)
     if (!email && userInfo?.email) {
         dispatch(userAdded(userInfo))
+    }
+    const logout = () => {
+        dispatch(removeUser())
     }
     return (
         <div>
@@ -30,13 +33,15 @@ const MainNavbar = () => {
                         <ul className='flex justify-between items-center'>
                             <Link href="/"><List>Home</List></Link>
                             <Link href="/cinema"><List>Cinema</List></Link>
-                            {
-                                email ? <Link href="/dashboard/profile"><List>Dashboard</List></Link> :
-                                    <Link href="/signin"><List>SignIn</List></Link>
-                            }
-
                             <Link href="/about"><List>About</List></Link>
                             <Link href="/faq"><List>FAQ</List></Link>
+                            {
+                                email ? <div className='flex items-center'>
+                                    <Link href="/dashboard/profile"><List>Dashboard</List></Link>
+                                    <List><button onClick={logout} className='bg-red-600 text-white px-3 py-1 rounded-md'>Logout</button></List>
+                                </div> :
+                                    <Link href="/signin"><List>SignIn</List></Link>
+                            }
 
                         </ul>
                     </div>
