@@ -29,6 +29,8 @@ const Sidebar = () => {
                 {
                     role === 'SuperAdmin' && <div>
                         <Link href='/dashboard/add-admin'><List className='border pl-3 py-1'>Add Admin</List></Link>
+                        <Link href='/dashboard/add-cinema'><List className='border pl-3 py-1'>Add Cinema</List></Link>
+                        <Link href='/dashboard/add-category'><List className='border pl-3 py-1'>Add Category</List></Link>
                         <Link href='/dashboard/add-faq'><List className='border pl-3 py-1'>Add FAQ</List></Link>
                         <List className='border pl-3 py-1'>FAQ</List>
                         <Link href='/dashboard/add-blog'><List className='border pl-3 py-1'>Add Blog</List></Link>
