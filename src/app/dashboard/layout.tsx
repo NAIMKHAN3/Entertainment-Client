@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
 import Providers from '@/lib/Provider'
 import Sidebar from '@/components/Sidebar'
+import MobileSidebar from '@/components/MobileSidebar'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,11 +21,12 @@ export default function RootLayout({
         <Providers>
             <html lang="en">
                 <body className={inter.className}>
-                    <div className='flex '>
-                    <div className='w-[20%] p-5'>
+                    <div className='lg:flex '>
+                    <div className='lg:w-[20%] p-5'>
                         <Sidebar />
+                        <MobileSidebar/>
                     </div>
-                    <div className='w-[80%] p-5'>
+                    <div className='lg:w-[80%] p-5'>
 
                         {children}
                     </div>

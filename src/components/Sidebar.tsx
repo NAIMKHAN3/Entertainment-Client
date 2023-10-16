@@ -16,7 +16,7 @@ const Sidebar = () => {
         dispatch(userAdded(userInfo))
     }
     return (
-        <div className='border min-h-screen'>
+        <div className='border hidden lg:block min-h-screen'>
             <div className=''>
             <div className='flex justify-center my-3'>
                 <img className='w-24 h-24 rounded-full border' src={profileImg as string} alt="" />

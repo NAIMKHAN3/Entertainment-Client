@@ -3,14 +3,15 @@ import TableBody from '@/components/TableBody';
 import TableHeade from '@/components/TableHeade';
 import { useAllUserQuery } from '@/redux/feature/auth/authApi';
 import { IUser } from '@/redux/feature/auth/authSlice';
+import { useAppSelector } from '@/redux/hooks/hooks';
 import React from 'react';
 
 const AllUser = () => {
     const {data} = useAllUserQuery(undefined)
-    console.log(data)
+    const { sidebar } = useAppSelector(state => state.sidebar)
     return (
         <div>
-             <table className="table-auto ">
+             <table className={`table-auto ${sidebar? "hidden": null}`}>
              <thead>
                     <tr>
                         <TableHeade>Id</TableHeade>
