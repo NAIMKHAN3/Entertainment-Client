@@ -22,7 +22,19 @@ const authApi = apiSlice.injectEndpoints({
                 url: '/super-admin/get-all-user'
             })
         }),
+        allAdmin: builder.query({
+            query: () => ({
+                method: 'GET',
+                url: '/super-admin/get-all-admin'
+            })
+        }),
+        allSuperAdmin: builder.query({
+            query: () => ({
+                method: 'GET',
+                url: '/super-admin/get-all-super-admin'
+            })
+        }),
     })
 })
 
-export const {useUserRegMutation, useUserLoginMutation,useAllUserQuery} = authApi;
+export const {useUserRegMutation, useUserLoginMutation,useAllUserQuery, useAllAdminQuery, useAllSuperAdminQuery} = authApi;

@@ -1,13 +1,13 @@
 'use client'
 import TableBody from '@/components/TableBody';
 import TableHeade from '@/components/TableHeade';
-import { useAllUserQuery } from '@/redux/feature/auth/authApi';
+import { useAllAdminQuery, useAllSuperAdminQuery, useAllUserQuery } from '@/redux/feature/auth/authApi';
 import { IUser } from '@/redux/feature/auth/authSlice';
 import { useAppSelector } from '@/redux/hooks/hooks';
 import React from 'react';
 
-const AllUser = () => {
-    const {data} = useAllUserQuery(undefined)
+const AllSuperAdmin = () => {
+    const {data} = useAllSuperAdminQuery(undefined)
     const { sidebar } = useAppSelector(state => state.sidebar)
     return (
         <div className='border h-full w-full lg:mt-10'>
@@ -20,7 +20,7 @@ const AllUser = () => {
                         <TableHeade>Phone</TableHeade>
                         <TableHeade>Address</TableHeade>
                         <TableHeade>Role</TableHeade>
-                        <TableHeade>Promote</TableHeade>
+                        <TableHeade>Demotion</TableHeade>
                         <TableHeade>Edit</TableHeade>
                         <TableHeade>Action</TableHeade>
                     </tr>
@@ -47,4 +47,4 @@ const AllUser = () => {
     );
 };
 
-export default AllUser;
+export default AllSuperAdmin;
