@@ -16,7 +16,13 @@ const authApi = apiSlice.injectEndpoints({
                 data: data
             })
         }),
+        allUser: builder.query({
+            query: () => ({
+                method: 'GET',
+                url: '/super-admin/get-all-user'
+            })
+        }),
     })
 })
 
-export const {useUserRegMutation, useUserLoginMutation} = authApi;
+export const {useUserRegMutation, useUserLoginMutation,useAllUserQuery} = authApi;

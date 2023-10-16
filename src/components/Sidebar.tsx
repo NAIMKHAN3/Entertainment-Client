@@ -35,6 +35,7 @@ const Sidebar = () => {
                         <List className='border pl-3 py-1'>FAQ</List>
                         <Link href='/dashboard/add-blog'><List className='border pl-3 py-1'>Add Blog</List></Link>
                         <List className='border pl-3 py-1'>All Blog</List>
+                        <Link href='/dashboard/all-user'><List className='border pl-3 py-1'>All User</List></Link>
                     </div>
                 }
                 {
@@ -46,7 +47,7 @@ const Sidebar = () => {
                 {
                     role === 'Admin' && <div>
                         <List className='border pl-3 py-1'>Add User</List>
-                        <List className='border pl-3 py-1'>All User</List>
+                        <Link href='/dashboard/all-user'><List className='border pl-3 py-1'>All User</List></Link>
                         <List className='border pl-3 py-1'>Add Cinema</List>
                         <List className='border pl-3 py-1'>All Cinema</List>
                     </div>
