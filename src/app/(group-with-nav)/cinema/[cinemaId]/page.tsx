@@ -77,7 +77,7 @@ const CinemaDetails = ({ params }: any) => {
 
                     <div>
 
-
+                    <Link href={`/cinema/rating/${id}`}><button className='mt-5 bg-[#00246a] hover:bg-white border border-[#00246a] hover:text-[#00246a] duration-200 px-2 py-1 rounded-md text-white' >Add Review</button></Link>
                     </div>
                 </div>
             </div>
