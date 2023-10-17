@@ -6,14 +6,14 @@ const authApi = apiSlice.injectEndpoints({
             query: (data) => ({
                 method: 'POST',
                 url: '/auth/create-user',
-                data: data
+                body: data
             })
         }),
         userLogin: builder.mutation({
             query: (data) => ({
                 method: 'POST',
                 url: '/auth/login-user',
-                data: data
+                body: data
             })
         }),
         allUser: builder.query({

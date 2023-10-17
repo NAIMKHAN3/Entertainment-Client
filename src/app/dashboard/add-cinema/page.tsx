@@ -2,6 +2,8 @@
 import FormInput from '@/components/FormInput';
 import { useUserRegMutation } from '@/redux/feature/auth/authApi';
 import { useGetCategoryQuery } from '@/redux/feature/category/categoryApi';
+import { useAddCinemaMutation } from '@/redux/feature/cinema/cinemaApi';
+import { useImageUploadMutation } from '@/redux/feature/imageUpload/imageUploadApi';
 import { useAppDispatch } from '@/redux/hooks/hooks';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -23,17 +25,37 @@ type Inputs = {
     price: string
     realeaseDate: string
     categoryId: string
+    image: any
 }
 const AddCinema = () => {
-    const {data} = useGetCategoryQuery(undefined)
+    const { data } = useGetCategoryQuery(undefined)
+    const [imagePost] = useImageUploadMutation()
+    const [addCinema] = useAddCinemaMutation()
     const { control, register, handleSubmit, watch, formState: { errors }, setValue } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        console.log(data)
+        const { image, ...cinemaInfo } = data
+        console.log({ image, cinemaInfo })
         try {
+
+            const formData = new FormData();
+            formData.append('image', image[0])
+            const { success, data: imageUrl } = await imagePost(formData).unwrap();
+            if (success) {
+
+                data.image = imageUrl
+                const result = await addCinema(data).unwrap()
+                if (result?.success) {
+                    toast.success(result?.message)
+                }
+            }
+
+
+
+
 
         }
         catch (err: any) {
-            toast.error(err?.data?.message, { id: 'Signup' })
+            toast.error(err?.data?.message, { id: 'Cinema' })
         }
     }
 
@@ -54,18 +76,18 @@ const AddCinema = () => {
                     <FormInput register={register} type='text' name='price' lebel='Price' placeholder='price' />
                     <div className='flex flex-col my-3 w-full mx-1'>
                         <label className="font-semibold" htmlFor="">Select Category</label>
-                        <select className='w-full border my-2 px-2 py-1.5 focus:border-none focus:outline-none focus:ring focus:ring-blue-300' {...register('categoryId',{required: true})} id="">
+                        <select className='w-full border my-2 px-2 py-1.5 focus:border-none focus:outline-none focus:ring focus:ring-blue-300' {...register('categoryId', { required: true })} id="">
                             {
                                 data?.data?.map((category: Category) => {
-                                  return  <option value={category.id}>{category.name}</option>
+                                    return <option value={category.id}>{category.name}</option>
                                 })
                             }
-                        {/* <option value="Hindi Movie">Hindi Movie</option>
+                            {/* <option value="Hindi Movie">Hindi Movie</option>
                         <option value="Bangla Movie">Bangla Movie</option>
                         <option value="English Movie">English Movie</option> */}
-                    </select>
+                        </select>
                     </div>
-                    
+
                 </div>
                 <div className='flex justify-between items-center'>
                     <FormInput register={register} type='text' name='description' lebel='Movie Description' placeholder='description' />

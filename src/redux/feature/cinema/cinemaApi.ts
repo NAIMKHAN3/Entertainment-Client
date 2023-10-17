@@ -1,6 +1,6 @@
 import { apiSlice } from "@/redux/RootApi/apiSlice";
 
-const categoryApi = apiSlice.injectEndpoints({
+const cinameApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getCategory: builder.query({
             query: () => ({
@@ -8,9 +8,9 @@ const categoryApi = apiSlice.injectEndpoints({
                 method: "GET"
             })
         }),
-        addCateogry: builder.mutation({
+        addCinema: builder.mutation({
             query: (data) => ({
-                url: "/category/create-category",
+                url: "/cenema/create-cenema",
                 method: "POST",
                 body: data
             })
@@ -18,4 +18,4 @@ const categoryApi = apiSlice.injectEndpoints({
     })
 })
 
-export const {useGetCategoryQuery, useAddCateogryMutation} = categoryApi;
+export const {useGetCategoryQuery, useAddCinemaMutation } = cinameApi;
