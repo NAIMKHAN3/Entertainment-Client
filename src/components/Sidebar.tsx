@@ -38,6 +38,7 @@ const Sidebar = () => {
                         <Link href='/dashboard/all-user'><List className='border pl-3 py-1'>All User</List></Link>
                         <Link href='/dashboard/all-admin'><List className='border pl-3 py-1'>All Admin</List></Link>
                         <Link href='/dashboard/all-super-admin'><List className='border pl-3 py-1'>All Super Admin</List></Link>
+                        <Link href='/dashboard/all-booking'><List className='border pl-3 py-1'>All Booking</List></Link>
                     </div>
                 }
                 {
