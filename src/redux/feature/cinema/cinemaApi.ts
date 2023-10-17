@@ -7,6 +7,11 @@ const cinameApi = apiSlice.injectEndpoints({
                 url: "/cenema/get-cenema",
             })
         }),
+        getCinemaById: builder.query({
+            query: (id) => ({
+                url: `/cenema/get-cenema-by-id/${id}`,
+            })
+        }),
         addCinema: builder.mutation({
             query: (data) => ({
                 url: "/cenema/create-cenema",
@@ -17,4 +22,4 @@ const cinameApi = apiSlice.injectEndpoints({
     })
 })
 
-export const {useGetCinemaQuery, useAddCinemaMutation } = cinameApi;
+export const {useGetCinemaQuery, useAddCinemaMutation, useGetCinemaByIdQuery } = cinameApi;

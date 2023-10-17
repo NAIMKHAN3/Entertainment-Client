@@ -1,5 +1,6 @@
 import { useAddCartMutation } from '@/redux/feature/cart/cartApi';
 import { ICinema } from '@/types/interface';
+import Link from 'next/link';
 import React from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
@@ -26,7 +27,7 @@ const Cart = ({ cinema }: { cinema: ICinema }) => {
                 <h1>Price : {cinema.price}</h1>
             </div>
             <div className='grid grid-cols-2 gap-3 my-2'>
-                <button className='w-full bg-[#00246a] hover:bg-white border border-[#00246a] hover:text-[#00246a] duration-200 px-2 py-1 rounded-md text-white'>Details</button>
+                <Link href={`/cinema/${cinema.id}`}><button className='w-full bg-[#00246a] hover:bg-white border border-[#00246a] hover:text-[#00246a] duration-200 px-2 py-1 rounded-md text-white'>Details</button></Link>
                 <button className='w-full bg-[#00246a] hover:bg-white border border-[#00246a] hover:text-[#00246a] duration-200 px-2 py-1 rounded-md text-white' onClick={()=> addCartToDb(cinema.id)} >Add Cart</button>
             </div>
         </div>
