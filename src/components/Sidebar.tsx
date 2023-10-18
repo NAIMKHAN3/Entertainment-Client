@@ -1,20 +1,23 @@
 'use client'
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
-import React from 'react';
+import React, { useEffect } from 'react';
 import List from './List';
 import Link from 'next/link';
 import { getInfoToLocal } from '@/share';
 import { userAdded } from '@/redux/feature/auth/authSlice';
 import MobileSidebar from './MobileSidebar';
+import { useGetUserByIdQuery } from '@/redux/feature/auth/authApi';
 
 const Sidebar = () => {
     const { profileImg, name, role, email } = useAppSelector(state => state.auth)
     const dispatch = useAppDispatch()
     const userInfo = getInfoToLocal('user')
-    console.log(userInfo)
-    if (!email && userInfo?.email) {
-        dispatch(userAdded(userInfo))
-    }
+    const {data} = useGetUserByIdQuery(userInfo.id)
+    useEffect(()=>{
+        if (!email && data?.data) {
+            dispatch(userAdded(data.data))
+        }
+    },[data])
     return (
         <div className='border hidden lg:block min-h-screen'>
             <div className=''>
@@ -25,7 +28,7 @@ const Sidebar = () => {
             <h1 className='text-center text-xs font-semibold border-b-2 pb-5 text-[#00246a]'>{role} Dashboard</h1>
 
             <ul className='my-5'>
-                <List className='border pl-3 py-1'>My Profile</List>
+                <Link href='/dashboard/profile'><List className='border pl-3 py-1'>My Profile</List></Link>
                 {
                     role === 'SuperAdmin' && <div>
                         <Link href='/dashboard/add-admin'><List className='border pl-3 py-1'>Add Admin</List></Link>

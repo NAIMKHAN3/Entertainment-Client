@@ -22,6 +22,12 @@ const authApi = apiSlice.injectEndpoints({
                 url: '/super-admin/get-all-user'
             })
         }),
+        getUserById: builder.query({
+            query: (id) => ({
+                method: 'GET',
+                url: `/user/get-profile-by-id/${id}`
+            })
+        }),
         allAdmin: builder.query({
             query: () => ({
                 method: 'GET',
@@ -34,7 +40,14 @@ const authApi = apiSlice.injectEndpoints({
                 url: '/super-admin/get-all-super-admin'
             })
         }),
+        updateUser: builder.mutation({
+            query: (data) => ({
+                method: 'PUT',
+                url: `/user/update-profile/${data.id}`,
+                body: data.body
+            })
+        }),
     })
 })
 
-export const {useUserRegMutation, useUserLoginMutation,useAllUserQuery, useAllAdminQuery, useAllSuperAdminQuery} = authApi;
+export const {useUserRegMutation, useUpdateUserMutation, useGetUserByIdQuery, useUserLoginMutation,useAllUserQuery, useAllAdminQuery, useAllSuperAdminQuery} = authApi;

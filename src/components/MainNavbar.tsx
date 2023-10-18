@@ -1,23 +1,28 @@
 'use client'
-import React from 'react';
+import React, {useEffect} from 'react';
 import List from './List';
 import Link from 'next/link';
 import MobileNavbar from './MobileNav';
 import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
 import { removeUser, userAdded } from '@/redux/feature/auth/authSlice';
 import { getInfoToLocal } from '@/share';
+import { useGetUserByIdQuery } from '@/redux/feature/auth/authApi';
 
 const MainNavbar = () => {
     const { email } = useAppSelector(state => state.auth)
     const dispatch = useAppDispatch()
     const userInfo = getInfoToLocal('user')
     console.log(userInfo)
-    if (!email && userInfo?.email) {
-        dispatch(userAdded(userInfo))
-    }
+    const {data} = useGetUserByIdQuery(userInfo.id)
+   
     const logout = () => {
         dispatch(removeUser())
     }
+    useEffect(()=>{
+        if (!email && data?.data) {
+            dispatch(userAdded(data.data))
+        }
+    },[data])
     return (
         <div>
             <div className='hidden lg:block'>
