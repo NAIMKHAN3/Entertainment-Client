@@ -58,10 +58,10 @@ export default function TestimonialCarousel() {
         >
             {
                 data?.data?.map((rating: any) => <SwiperSlide>
-                    <div className="container px-5 md:px-10 py-10 mx-auto">
+                    <div className="container px-5 md:px-10 py-10 mx-auto ">
                         <div className="flex flex-wrap -m-4">
-                            <div className="p-4 w-full">
-                                <div className="h-full bg-gray-100 p-8 rounded">
+                            <div className="p-4 w-full h-80">
+                                <div className="h-full bg-gray-100  p-8 rounded">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="currentColor"

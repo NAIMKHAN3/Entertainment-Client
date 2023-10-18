@@ -3,7 +3,6 @@ import { getInfoToLocal } from '@/share';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const token = getInfoToLocal('token')
-console.log(token)
 const customBaseQuery = fetchBaseQuery({
   baseUrl: 'https://entertainment-movie-b0gwjkr2u-naimkhan3.vercel.app/api/v1',
   prepareHeaders(headers) {
