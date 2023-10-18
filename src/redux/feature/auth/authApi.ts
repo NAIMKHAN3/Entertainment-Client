@@ -16,6 +16,13 @@ const authApi = apiSlice.injectEndpoints({
                 body: data
             })
         }),
+        changePassword: builder.mutation({
+            query: (data) => ({
+                method: 'POST',
+                url: '/auth/change-password',
+                body: data
+            })
+        }),
         allUser: builder.query({
             query: () => ({
                 method: 'GET',
@@ -50,4 +57,4 @@ const authApi = apiSlice.injectEndpoints({
     })
 })
 
-export const {useUserRegMutation, useUpdateUserMutation, useGetUserByIdQuery, useUserLoginMutation,useAllUserQuery, useAllAdminQuery, useAllSuperAdminQuery} = authApi;
+export const {useUserRegMutation, useChangePasswordMutation, useUpdateUserMutation, useGetUserByIdQuery, useUserLoginMutation,useAllUserQuery, useAllAdminQuery, useAllSuperAdminQuery} = authApi;

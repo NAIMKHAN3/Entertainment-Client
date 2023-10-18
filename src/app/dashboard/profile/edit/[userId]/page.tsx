@@ -3,7 +3,7 @@ import FormInput from '@/components/FormInput';
 import { useGetUserByIdQuery, useUpdateUserMutation, useUserRegMutation } from '@/redux/feature/auth/authApi';
 import { userAdded } from '@/redux/feature/auth/authSlice';
 import { useImageUploadMutation } from '@/redux/feature/imageUpload/imageUploadApi';
-import { useAppDispatch } from '@/redux/hooks/hooks';
+import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
 import { getInfoToLocal } from '@/share';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -23,8 +23,9 @@ type Inputs = {
 }
 const EditProfile = ({ params }: any) => {
     const userId = params?.userId;
+    const { id } = useAppSelector(state => state.auth)
     const { data, isLoading } = useGetUserByIdQuery(userId)
-    const { name, address, contactNo, profileImg } = data?.data || {};
+    const { name, address, contactNo, profileImg} = data?.data || {};
     const [image, setImage] = useState(null)
     console.log(data)
     const dispatch = useAppDispatch();
@@ -40,23 +41,33 @@ const EditProfile = ({ params }: any) => {
                 const formData = new FormData();
                 formData.append('image', image)
                 const { success, data: imageUrl } = await imagePost(formData).unwrap();
-                if(success){
+                if (success) {
                     data.profileImg = imageUrl
                 }
             }
             console.log(data)
-            const result = await updateUser({id:userId,body:data}).unwrap()
-              if (result?.success) {
+            const result = await updateUser({ id: userId, body: data }).unwrap()
+            if (result?.success) {
                 toast.success('Profile Updated')
                 const user = getInfoToLocal('user')
 
-                if(user?.id === result?.data?.id){
+                if (user?.id === result?.data?.id) {
                     dispatch(userAdded(result?.data))
                 }
-                
+                if (userId === id) {
+                    router.push('/dashboard/profile')
+                }
+                else if(result?.data?.role === 'Admin'){
+                    router.push('/dashboard/all-admin')
+                }
+                else if(result?.data?.role === 'User'){
+                    router.push('/dashboard/all-user')
+                }
+                else if(result?.data?.role === 'SuperAdmin'){
+                    router.push('/dashboard/all-super-admin')
+                }
 
-                router.push('/dashboard/profile')
-              }
+            }
         }
         catch (err: any) {
             toast.error(err?.data?.message, { id: 'Signup' })

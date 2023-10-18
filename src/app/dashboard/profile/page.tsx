@@ -14,7 +14,8 @@ const Profile = () => {
                 <div className='flex justify-end'>
                     <div>
                     <Link href={`/dashboard/profile/edit/${id}`}><button className='bg-[#00246a] mr-3 text-white px-3 py-1 rounded-md'>Edit Profile</button></Link>
-                    <button className='bg-[#00246a] text-white px-3 py-1 rounded-md'>Change Password</button>
+                    <Link href={`/dashboard/profile/change-password/${id}`}><button className='bg-[#00246a] mr-3 text-white px-3 py-1 rounded-md'>Change Password</button></Link>
+                    
                     </div>
                 </div>
             <h1>My Name: {name}</h1>

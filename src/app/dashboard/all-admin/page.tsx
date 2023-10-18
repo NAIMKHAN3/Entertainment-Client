@@ -4,6 +4,7 @@ import TableHeade from '@/components/TableHeade';
 import { useAllAdminQuery, useAllUserQuery } from '@/redux/feature/auth/authApi';
 import { IUser } from '@/redux/feature/auth/authSlice';
 import { useAppSelector } from '@/redux/hooks/hooks';
+import Link from 'next/link';
 import React from 'react';
 
 const AllAdmin = () => {
@@ -41,7 +42,7 @@ return <h1 className='text-center text-lg font-semibold text-[#00246a] mt-10'>No
                             <TableBody>{user.role}</TableBody>
                             <TableBody><button className='bg-[#00246a] text-white px-3 py-1 rounded-md'>Make Super Admin</button></TableBody>
                             <TableBody><button className='bg-[#00246a] text-white px-3 py-1 rounded-md'>Make Admin</button></TableBody>
-                            <TableBody><button className='bg-[#00246a] text-white px-3 py-1 rounded-md'>Edit</button></TableBody>
+                            <Link href={`/dashboard/profile/edit/${user.id}`}><TableBody><button className='bg-[#00246a] text-white px-3 py-1 rounded-md'>Edit</button></TableBody></Link>
                             <TableBody><button className='bg-red-700 text-white px-3 py-1 rounded-md'>Delete</button></TableBody>
                             
                         </tr>)
