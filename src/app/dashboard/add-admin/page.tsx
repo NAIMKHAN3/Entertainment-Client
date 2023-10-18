@@ -1,6 +1,7 @@
 "use client"
 import FormInput from '@/components/FormInput';
 import { useUserRegMutation } from '@/redux/feature/auth/authApi';
+import { useCreateAdmitMutation } from '@/redux/feature/superAdmin/superAdminApi';
 import { useAppDispatch } from '@/redux/hooks/hooks';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -21,20 +22,16 @@ type Inputs = {
 const AddAdmin = () => {
     const dispatch = useAppDispatch();
     const router = useRouter();
-    const [userRegistration, { isLoading }] = useUserRegMutation();
+    const [createAdmin, { isLoading }] = useCreateAdmitMutation();
     const { control, register, handleSubmit, watch, formState: { errors }, setValue } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         console.log(data)
         try {
-            const result = await userRegistration({ ...data }).unwrap()
-            if (isLoading) {
-                toast.loading('Signup...', { id: 'Signup' })
-            }
+            const result = await createAdmin({ ...data }).unwrap()
             if (result.success) {
-                toast.success('Signup Success', { id: 'Signup' })
-                localStorage.setItem('user', JSON.stringify(result.data))
-                localStorage.setItem('token', JSON.stringify(result.accessToken))
-                router.push('/')
+                toast.success('Admin Created')
+               
+                router.push('/dashboard/all-admin')
             }
         }
         catch (err: any) {
