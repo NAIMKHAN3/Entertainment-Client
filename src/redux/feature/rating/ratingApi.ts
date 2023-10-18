@@ -9,9 +9,14 @@ const ratingApi = apiSlice.injectEndpoints({
                 body: data
             })
         }),
+        getRatings: builder.query({
+            query: () => ({
+                url: '/rating/get-ratings',
+            })
+        }),
        
     })
 })
 
 
-export const {useAddRatingMutation} = ratingApi;
+export const {useAddRatingMutation, useGetRatingsQuery} = ratingApi;

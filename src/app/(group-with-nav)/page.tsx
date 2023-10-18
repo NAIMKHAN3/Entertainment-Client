@@ -1,3 +1,5 @@
+import HomePageBanner from '@/components/HomeBanner'
+import TestimonialCarousel from '@/components/Testemonial'
 import Image from 'next/image'
 import { Toaster } from 'react-hot-toast'
 
@@ -6,6 +8,8 @@ export default function Home() {
     <div>
       <Toaster />
       <h1>This is App page</h1>
+      <HomePageBanner />
+      <TestimonialCarousel />
     </div>
   )
 }
