@@ -1,6 +1,7 @@
 "use client"
 import FormInput from '@/components/FormInput';
 import { useUserRegMutation } from '@/redux/feature/auth/authApi';
+import { useAddFaqMutation } from '@/redux/feature/faq/faqApi';
 import { useAppDispatch } from '@/redux/hooks/hooks';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -19,11 +20,18 @@ type Inputs = {
     address: string
 }
 const AddFaq = () => {
+    const [addFaq] = useAddFaqMutation()
+    const router = useRouter();
     const { control, register, handleSubmit, watch, formState: { errors }, setValue } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         console.log(data)
         try {
-           
+            const {success, message} = await addFaq(data).unwrap()
+            if (success) {
+                toast.success(message)
+                router.push('/dashboard/all-faq')
+
+            }
         }
         catch (err: any) {
             toast.error(err?.data?.message, { id: 'Signup' })
