@@ -14,7 +14,7 @@ const cinameApi = apiSlice.injectEndpoints({
         }),
         getCinemaByLeatest: builder.query({
             query: () => ({
-                url: `/cenema/get-cenema-by-letest`,
+                url: `/cenema/get-cenema-by-latest`,
             })
         }),
         getCinemaByPopuler: builder.query({

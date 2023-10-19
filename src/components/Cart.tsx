@@ -24,7 +24,10 @@ const Cart = ({ cinema }: { cinema: ICinema }) => {
             <img className='h-52 w-full' src={cinema.image} alt="" />
             <div className='my-2 font-semibold'>
                 <h1>Movie Name : {cinema.name}</h1>
+                <div className='flex justify-between items-center my-2'>
                 <h1>Price : {cinema.price}</h1>
+                <h1>Category : {cinema?.category?.name || cinema?.category}</h1>
+                </div>
             </div>
             <div className='grid grid-cols-2 gap-3 my-2'>
                 <Link href={`/cinema/${cinema.id}`}><button className='w-full bg-[#00246a] hover:bg-white border border-[#00246a] hover:text-[#00246a] duration-200 px-2 py-1 rounded-md text-white'>Details</button></Link>
