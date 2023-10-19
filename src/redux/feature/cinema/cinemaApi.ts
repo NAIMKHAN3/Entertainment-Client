@@ -7,6 +7,21 @@ const cinameApi = apiSlice.injectEndpoints({
                 url: `/cenema/get-cenema?page=${data.page}&size=${data.size}&search=${data.search}`,
             })
         }),
+        getCinemaByCategory: builder.query({
+            query: () => ({
+                url: `/cenema/get-cenema-by-category`,
+            })
+        }),
+        getCinemaByLeatest: builder.query({
+            query: () => ({
+                url: `/cenema/get-cenema-by-letest`,
+            })
+        }),
+        getCinemaByPopuler: builder.query({
+            query: () => ({
+                url: `/cenema/get-cenema-by-random`,
+            })
+        }),
         getCinemaById: builder.query({
             query: (id) => ({
                 url: `/cenema/get-cenema-by-id/${id}`,
@@ -36,4 +51,4 @@ const cinameApi = apiSlice.injectEndpoints({
     })
 })
 
-export const {useGetCinemaQuery, useDeleteCinemaMutation, useUpdateCinemaMutation, useAddCinemaMutation, useGetCinemaByIdQuery } = cinameApi;
+export const {useGetCinemaQuery,useGetCinemaByCategoryQuery,useGetCinemaByPopulerQuery, useGetCinemaByLeatestQuery, useDeleteCinemaMutation, useUpdateCinemaMutation, useAddCinemaMutation, useGetCinemaByIdQuery } = cinameApi;

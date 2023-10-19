@@ -59,7 +59,34 @@ const HomePageBanner = () => {
             <SwiperSlide className="bg-[#EEEEEE] ">
               <div className="relative text-white">
                 <img
-                  src="https://wallpapers.com/images/hd/k-g-f-2-movie-poster-2von5vqybbbu66ug.jpg"
+                  src="https://i.ytimg.com/vi/blIJLbU33Mw/maxresdefault.jpg"
+                  alt=""
+                  className="h-[100vh] w-full"
+             
+                />
+                {/* <div className="absolute left-0 top-[30%] ml-14 w-[65%]">
+                  <h3 className="font-bold md:text-[35px] lg:text-[50px]">
+                    Meet The Line of <br />
+                    The Millenninum
+                  </h3>
+
+                  <p>
+                    {" "}
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                    <br /> Labore fugiat aliquam voluptatibus qui deleniti modi
+                  </p>
+
+                  <div className="flex gap-5">
+                    <button>click collection</button>
+                    <button>Buy Now</button>
+                  </div>
+                </div> */}
+              </div>
+            </SwiperSlide>
+            <SwiperSlide className="bg-[#EEEEEE] ">
+              <div className="relative text-white">
+                <img
+                  src="https://www.koimoi.com/wp-content/new-galleries/2023/08/jailer-surpasses-rs-100-crore-on-opening-with-lifetime-gross-estimated-to-be-over-rs-500-crore.jpg"
                   alt=""
                   className="h-[100vh] w-full"
              
@@ -86,7 +113,7 @@ const HomePageBanner = () => {
             <SwiperSlide className="tranp bg-[#EEEEEE]">
               <div className="relative text-white">
                 <img
-                  src="https://i.ibb.co/nMK2n7T/bahubali.jpg"
+                  src="https://i.ytimg.com/vi/lshAqOT7BB8/sddefault.jpg"
                   alt=""
                   className="h-[100vh] w-full"
                   width={undefined}

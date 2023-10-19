@@ -1,3 +1,4 @@
+import CategoryMovie from '@/components/CategoryMovie'
 import HomePageBanner from '@/components/HomeBanner'
 import TestimonialCarousel from '@/components/Testemonial'
 import UniqeSectionOne from '@/components/UniqeSectionOne'
@@ -8,8 +9,8 @@ export default function Home() {
   return (
     <div>
       <Toaster />
-      <h1>This is App page</h1>
       <HomePageBanner />
+      <CategoryMovie/>
       <UniqeSectionOne/>
       <TestimonialCarousel />
     </div>
