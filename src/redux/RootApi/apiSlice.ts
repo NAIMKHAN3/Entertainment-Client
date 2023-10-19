@@ -4,7 +4,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 
 const token = getInfoToLocal('token')
 const customBaseQuery = fetchBaseQuery({
-  baseUrl: 'https://entertainment-movie-4vmbbduds-naimkhan3.vercel.app/api/v1',
+  baseUrl: 'https://entertainment-movie-lobhswwx3-naimkhan3.vercel.app/api/v1',
   prepareHeaders(headers) {
     headers.set('Authorization', `Bearer ${token}`);
     return headers;

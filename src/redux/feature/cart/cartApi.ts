@@ -2,10 +2,16 @@ import { apiSlice } from "@/redux/RootApi/apiSlice";
 
 const cartApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
-        getCategory: builder.query({
+        getCart: builder.query({
             query: () => ({
-                url: "/category/get-category",
+                url: "/cart/get-cart",
                 method: "GET"
+            })
+        }),
+        deleteCart: builder.mutation({
+            query: (id) => ({
+                url: `/cart/delete-cart/${id}`,
+                method: "DELETE"
             })
         }),
         addCart: builder.mutation({
@@ -18,4 +24,4 @@ const cartApi = apiSlice.injectEndpoints({
     })
 })
 
-export const {useAddCartMutation} = cartApi;
+export const {useAddCartMutation, useGetCartQuery, useDeleteCartMutation} = cartApi;
