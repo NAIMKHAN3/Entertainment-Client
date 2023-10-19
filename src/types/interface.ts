@@ -6,5 +6,6 @@ export interface ICinema {
     image: string;
     price: string;
     description: string;
-    realeaseDate: string
+    realeaseDate: string;
+    category:any;
 }

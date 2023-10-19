@@ -19,7 +19,20 @@ const cinameApi = apiSlice.injectEndpoints({
                 body: data
             })
         }),
+        updateCinema: builder.mutation({
+            query: (data) => ({
+                url: `/cenema/update-cenema/${data.id}`,
+                method: "PUT",
+                body: data?.data
+            })
+        }),
+        deleteCinema: builder.mutation({
+            query: (id) => ({
+                url: `/cenema/delete-cenema/${id}`,
+                method: "DELETE",
+            })
+        }),
     })
 })
 
-export const {useGetCinemaQuery, useAddCinemaMutation, useGetCinemaByIdQuery } = cinameApi;
+export const {useGetCinemaQuery, useDeleteCinemaMutation, useUpdateCinemaMutation, useAddCinemaMutation, useGetCinemaByIdQuery } = cinameApi;
