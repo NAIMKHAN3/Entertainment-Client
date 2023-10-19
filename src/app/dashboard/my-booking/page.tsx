@@ -3,17 +3,19 @@ import TableBody from '@/components/TableBody';
 import TableHeade from '@/components/TableHeade';
 import { useAllAdminQuery, useAllSuperAdminQuery, useAllUserQuery } from '@/redux/feature/auth/authApi';
 import { IUser } from '@/redux/feature/auth/authSlice';
-import { useAllBookingQuery, useDeleteBookingMutation, useUpdateBookingStatusMutation } from '@/redux/feature/booking/bookingApi';
+import { useAllBookingQuery, useDeleteBookingMutation, useMyBookingsQuery, useUpdateBookingStatusMutation, useUpdatePaymentStatusMutation } from '@/redux/feature/booking/bookingApi';
 import { useAppSelector } from '@/redux/hooks/hooks';
 import Link from 'next/link';
 import React from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
-const AllBooking = () => {
-    const { data, isLoading } = useAllBookingQuery(undefined)
-    const [updateStatus] = useUpdateBookingStatusMutation()
-    const { sidebar } = useAppSelector(state => state.sidebar)
+const MyBooking = () => {
+    const { data, isLoading } = useMyBookingsQuery(undefined)
+    const [updateStatus] = useUpdateBookingStatusMutation();
     const [deleteBooking] = useDeleteBookingMutation()
+    const [updatePaymentStatus] = useUpdatePaymentStatusMutation()
+    const { sidebar } = useAppSelector(state => state.sidebar)
+
     if (isLoading) {
         return <h1 className='text-center mt-10'>Loading...</h1>
     }
@@ -30,10 +32,22 @@ const AllBooking = () => {
             toast.error(err?.data?.message)
         }
     }
-    const bookingDelete = async (id: string) => {
-        try {
-            const { success, message } = await deleteBooking(id).unwrap();
-            if (success) {
+    const bookingDelete = async (id:string) => {
+        try{
+            const {success, message} = await deleteBooking(id).unwrap();
+            if(success){
+                toast.success(message)
+            }
+
+        }
+        catch (err: any) {
+            toast.error(err?.data?.message, { id: 'Signup' })
+        }
+    }
+    const updatePayment = async (id:string) => {
+        try{
+            const {success, message} = await updatePaymentStatus({id, data:{paymentStatus:true}}).unwrap();
+            if(success){
                 toast.success(message)
             }
 
@@ -56,9 +70,9 @@ const AllBooking = () => {
                         <TableHeade>Person</TableHeade>
                         <TableHeade>Status</TableHeade>
                         <TableHeade>Edit</TableHeade>
-                        <TableHeade>Rejected</TableHeade>
-                        <TableHeade>Accepted</TableHeade>
-                        <TableHeade>Deleted</TableHeade>
+                        <TableHeade>Cancel</TableHeade>
+                        <TableHeade>Delete</TableHeade>
+                        <TableHeade>PAY</TableHeade>
                     </tr>
                 </thead>
                 <tbody>
@@ -73,18 +87,17 @@ const AllBooking = () => {
                             <TableBody>{book.person}</TableBody>
                             <TableBody>{book.status}</TableBody>
                             <Link href={`/dashboard/my-booking/edit/${book.id}`}><TableBody><button className='bg-[#00246a] text-white px-3 py-1 rounded-md' >Edit</button></TableBody></Link>
-                            {
-                                book.status === 'Pending' ? <>
-                                    <TableBody><button className='bg-red-700 text-white px-3 py-1 rounded-md' onClick={() => statusChange({ id: book.id, status: "Rejected" })}>Rejected</button></TableBody>
-                                    <TableBody><button className='bg-[#00246a] text-white px-3 py-1 rounded-md' onClick={() => statusChange({ id: book.id, status: "Accepted" })}>Accepted</button></TableBody>
-                                </>
+                                    {
+                                        book.status === "Pending"? <TableBody><button className='bg-red-700 text-white px-3 py-1 rounded-md' onClick={() => statusChange({ id: book.id, status: "Rejected" })}>Cancel</button></TableBody>
+                                        : <TableBody></TableBody>
+                                    }
+                                    <TableBody><button className='bg-red-700 text-white px-3 py-1 rounded-md' onClick={() => bookingDelete(book.id)}>Delete</button></TableBody>
+                                    {
+                                        book.paymentStatus ? <TableBody><button className='bg-green-700 text-white px-3 py-1 rounded-md'>Paid</button></TableBody>
+                                        : <TableBody><button className='bg-[#00246a] text-white px-3 py-1 rounded-md' onClick={() => updatePayment(book.id)}>Payment</button></TableBody>
+                                    }
+                              
 
-                                    : <>
-                                        <TableBody></TableBody>
-                                        <TableBody></TableBody>
-                                    </>
-                            }
-                            <TableBody><button className='bg-red-700 text-white px-3 py-1 rounded-md' onClick={() => bookingDelete(book.id)}>Delete</button></TableBody>
 
                         </tr>)
                     }
@@ -94,4 +107,4 @@ const AllBooking = () => {
     );
 };
 
-export default AllBooking;
+export default MyBooking;
