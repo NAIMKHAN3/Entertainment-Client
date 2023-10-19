@@ -8,6 +8,12 @@ const categoryApi = apiSlice.injectEndpoints({
                 method: "GET"
             })
         }),
+        getCategoryById: builder.query({
+            query: (id) => ({
+                url: `/category/get-category-by-id/${id}`,
+                method: "GET"
+            })
+        }),
         addCateogry: builder.mutation({
             query: (data) => ({
                 url: "/category/create-category",
@@ -15,7 +21,20 @@ const categoryApi = apiSlice.injectEndpoints({
                 body: data
             })
         }),
+        updateCateogry: builder.mutation({
+            query: (data) => ({
+                url: `/category/update-category/${data.id}`,
+                method: "PUT",
+                body: data.data
+            })
+        }),
+        deleteCateogry: builder.mutation({
+            query: (id) => ({
+                url: `/category/delete-category/${id}`,
+                method: "DELETE",
+            })
+        }),
     })
 })
 
-export const {useGetCategoryQuery, useAddCateogryMutation} = categoryApi;
+export const {useGetCategoryQuery, useDeleteCateogryMutation, useUpdateCateogryMutation, useGetCategoryByIdQuery, useAddCateogryMutation} = categoryApi;

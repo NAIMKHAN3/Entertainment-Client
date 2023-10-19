@@ -27,7 +27,7 @@ type Inputs = {
     categoryId: string
     image: any
 }
-const AddCinema = ({ params }: any) => {
+const EditCinema = ({ params }: any) => {
     const [image, setImage] = useState(null)
     const [updateCinema] = useUpdateCinemaMutation()
     const cinemaId = params?.cinemaId;
@@ -66,7 +66,7 @@ const AddCinema = ({ params }: any) => {
     return (
         <div className='w-full mx-auto border p-5 mt-10 rounded-md'>
             <Toaster />
-            <h1 className='text-center font-semibold text-2xl'>Add Cinema</h1>
+            <h1 className='text-center font-semibold text-2xl'>Update Cinema</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='flex justify-between items-center'>
                     <FormInput defaultValue={name} register={register} type='text' name='name' lebel='Movie Name' placeholder='movie name' />
@@ -105,4 +105,4 @@ const AddCinema = ({ params }: any) => {
     );
 };
 
-export default AddCinema;
+export default EditCinema;
