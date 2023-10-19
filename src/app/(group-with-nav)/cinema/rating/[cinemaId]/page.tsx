@@ -3,6 +3,7 @@ import FormInput from '@/components/FormInput';
 import { useAddBookingMutation } from '@/redux/feature/booking/bookingApi';
 import { useGetCinemaByIdQuery } from '@/redux/feature/cinema/cinemaApi';
 import { useAddRatingMutation } from '@/redux/feature/rating/ratingApi';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import toast, { Toaster } from 'react-hot-toast';
@@ -15,7 +16,8 @@ type Inputs = {
     cenemaId: string
 }
 const RatingPage = ({params}:any) => {
-    const [addRating] = useAddRatingMutation()
+    const [addRating] = useAddRatingMutation();
+    const router = useRouter();
     const  cinemaId = params?.cinemaId;
     const { data, isLoading } = useGetCinemaByIdQuery(cinemaId)
     const { control, register, handleSubmit, watch, formState: { errors }, setValue } = useForm<Inputs>();
@@ -26,6 +28,10 @@ const RatingPage = ({params}:any) => {
             const {success, message} = await addRating(data).unwrap();
             if(success){
                 toast.success(message)
+                if(typeof window !== "undefined"){
+  
+                    router.push(`/cinema/${cinemaId}`)
+                }
             }
             
            

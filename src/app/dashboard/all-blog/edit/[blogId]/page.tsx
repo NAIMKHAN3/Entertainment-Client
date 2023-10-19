@@ -51,7 +51,10 @@ const EditBlog = ({ params }: any) => {
             const {success, message} = await updateBlog({id:blogId, data}).unwrap()
             if (success) {
                     toast.success(message)
-                    router.push('/dashboard/all-blog')
+                    if(typeof window !== "undefined"){
+  
+                        router.push('/dashboard/all-blog')
+                    }
                 
             }
 

@@ -57,7 +57,7 @@ export default function TestimonialCarousel() {
             className="w-full h-full flex flex-col"
         >
             {
-                data?.data?.map((rating: any) => <SwiperSlide>
+                data?.data?.map((rating: any) => <SwiperSlide key={rating?.id}>
                     <div className="container px-5 md:px-10 py-10 mx-auto ">
                         <div className="flex flex-wrap -m-4">
                             <div className="p-4 w-full h-80">

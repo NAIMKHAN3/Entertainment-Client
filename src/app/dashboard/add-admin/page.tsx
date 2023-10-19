@@ -30,8 +30,10 @@ const AddAdmin = () => {
             const result = await createAdmin({ ...data }).unwrap()
             if (result.success) {
                 toast.success('Admin Created')
-               
-                router.push('/dashboard/all-admin')
+                if(typeof window !== "undefined"){
+  
+                    router.push('/dashboard/all-admin')
+                }
             }
         }
         catch (err: any) {

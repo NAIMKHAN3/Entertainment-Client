@@ -5,7 +5,10 @@ import React from 'react';
 const Dashboard = () => {
 
    const router = useRouter();
-   router.push('/dashboard/profile')
+   if(typeof window !== "undefined"){
+  
+      router.push('/dashboard/profile')
+   }
 };
 
 export default Dashboard;

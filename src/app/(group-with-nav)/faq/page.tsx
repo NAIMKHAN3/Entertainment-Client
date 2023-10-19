@@ -38,7 +38,7 @@ const FAQ = () => {
           GENERAL QUESTIONS
         </h1>
         {data?.data?.map((faq:any) => (
-          <Accordion title={faq.ques} content={faq.ans} />
+          <Accordion key={faq.id} title={faq.ques} content={faq.ans} />
         ))}
         </div>
     );

@@ -29,7 +29,10 @@ const AddFaq = () => {
             const {success, message} = await addFaq(data).unwrap()
             if (success) {
                 toast.success(message)
-                router.push('/dashboard/all-faq')
+                if(typeof window !== "undefined"){
+  
+                    router.push('/dashboard/all-faq')
+                }
 
             }
         }

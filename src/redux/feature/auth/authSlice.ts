@@ -39,14 +39,18 @@ const authSlice = createSlice({
       state.profileImg = null;
       state.address = null;
       state.role = null;
-      localStorage.removeItem('user')
-      localStorage.removeItem('token')
+      if (typeof window !== "undefined") {
+        localStorage.removeItem('user')
+        localStorage.removeItem('token')
+      }
 
     }
   },
 })
 
 export const { userAdded, removeUser } = authSlice.actions;
+
+
 
 
 

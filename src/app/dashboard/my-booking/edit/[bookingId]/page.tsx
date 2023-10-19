@@ -28,9 +28,15 @@ const EditBooking = ({params}:any) => {
             if(success){
                 toast.success(message)
                 if(role === 'User'){
-                    router.push('/dashboard/my-booking')
+                    if(typeof window !== "undefined"){
+  
+                        router.push('/dashboard/my-booking')
+                    }
                 }else{
-                    router.push('/dashboard/all-booking')
+                    if(typeof window !== "undefined"){
+  
+                        router.push('/dashboard/all-booking')
+                    }
                 }
             }
             

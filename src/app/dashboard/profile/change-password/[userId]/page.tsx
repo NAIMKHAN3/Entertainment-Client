@@ -26,8 +26,10 @@ const ChangePassword = () => {
             const result = await changaPassword(data).unwrap()
               if(result.success){
                 toast.success(result?.message)
-
-                router.push('/dashboard/profile')
+                if(typeof window !== "undefined"){
+  
+                    router.push('/dashboard/profile')
+                }
               }
 
         }

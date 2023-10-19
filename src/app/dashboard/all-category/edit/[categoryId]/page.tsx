@@ -40,7 +40,10 @@ const EditCategory = ({ params }: any) => {
 
             if (success) {
                 toast.success(message)
-                router.push('/dashboard/all-category')
+                if(typeof window !== "undefined"){
+  
+                    router.push('/dashboard/all-category')
+                }
 
             }
 

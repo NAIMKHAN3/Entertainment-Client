@@ -32,9 +32,11 @@ const Signup = () => {
       }
       if (result.success) {
         toast.success('Signup Success',{id: 'Signup'})
-        localStorage.setItem('user', JSON.stringify(result.data))
+        if(typeof window !== "undefined"){
+          localStorage.setItem('user', JSON.stringify(result.data))
         localStorage.setItem('token', JSON.stringify(result.accessToken))
         router.push('/')
+        }
       }
     }
     catch (err:any) {

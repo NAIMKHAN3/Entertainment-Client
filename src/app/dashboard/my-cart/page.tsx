@@ -28,7 +28,7 @@ const MyCart = () => {
             <h1 className='text-center font-semibold text-2xl my-10'>My Cart List</h1>
             <div className='grid grid-cols-3 gap-3'>
                 {
-                    data.data.map((cart: any) => <div className='border shadow-lg p-3'>
+                    data.data.map((cart: any) => <div key={cart?.id} className='border shadow-lg p-3'>
                         <Toaster />
                         <img className='h-52 w-full' src={cart.cenema.image} alt="" />
                         <div className='my-2 font-semibold'>

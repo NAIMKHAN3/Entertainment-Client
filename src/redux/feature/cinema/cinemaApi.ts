@@ -10,7 +10,8 @@ const cinameApi = apiSlice.injectEndpoints({
         getCinemaById: builder.query({
             query: (id) => ({
                 url: `/cenema/get-cenema-by-id/${id}`,
-            })
+            }),
+            providesTags: ["rating"]
         }),
         addCinema: builder.mutation({
             query: (data) => ({

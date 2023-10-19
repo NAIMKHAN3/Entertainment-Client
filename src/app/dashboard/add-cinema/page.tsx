@@ -79,7 +79,7 @@ const AddCinema = () => {
                         <select className='w-full border my-2 px-2 py-1.5 focus:border-none focus:outline-none focus:ring focus:ring-blue-300' {...register('categoryId', { required: true })} id="">
                             {
                                 data?.data?.map((category: Category) => {
-                                    return <option value={category.id}>{category.name}</option>
+                                    return <option key={category?.id} value={category.id}>{category.name}</option>
                                 })
                             }
                             {/* <option value="Hindi Movie">Hindi Movie</option>

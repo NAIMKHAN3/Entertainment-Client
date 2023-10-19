@@ -13,7 +13,7 @@ const MainNavbar = () => {
     const dispatch = useAppDispatch()
     const userInfo = getInfoToLocal('user')
     console.log(userInfo)
-    const {data} = useGetUserByIdQuery(userInfo.id)
+    const {data} = useGetUserByIdQuery(userInfo?.id)
    
     const logout = () => {
         dispatch(removeUser())
@@ -38,6 +38,7 @@ const MainNavbar = () => {
                         <ul className='flex justify-between items-center'>
                             <Link href="/"><List>Home</List></Link>
                             <Link href="/cinema"><List>Cinema</List></Link>
+                            <Link href="/blog"><List>Blog</List></Link>
                             <Link href="/about"><List>About</List></Link>
                             <Link href="/faq"><List>FAQ</List></Link>
                             {

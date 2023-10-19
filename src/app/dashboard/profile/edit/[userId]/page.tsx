@@ -55,16 +55,28 @@ const EditProfile = ({ params }: any) => {
                     dispatch(userAdded(result?.data))
                 }
                 if (userId === id) {
-                    router.push('/dashboard/profile')
+                    if(typeof window !== "undefined"){
+  
+                        router.push('/dashboard/profile')
+                    }
                 }
                 else if(result?.data?.role === 'Admin'){
-                    router.push('/dashboard/all-admin')
+                    if(typeof window !== "undefined"){
+  
+                        router.push('/dashboard/all-admin')
+                    }
                 }
                 else if(result?.data?.role === 'User'){
-                    router.push('/dashboard/all-user')
+                    if(typeof window !== "undefined"){
+  
+                        router.push('/dashboard/all-user')
+                    }
                 }
                 else if(result?.data?.role === 'SuperAdmin'){
-                    router.push('/dashboard/all-super-admin')
+                    if(typeof window !== "undefined"){
+  
+                        router.push('/dashboard/all-super-admin')
+                    }
                 }
 
             }

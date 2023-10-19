@@ -29,10 +29,16 @@ const router = useRouter();
       const result = await userLogin(data).unwrap();
       if(result.success){
         toast.success('Signin Success',{id: 'Signin'})
-        localStorage.setItem('user', JSON.stringify(result.data))
-        localStorage.setItem('token', JSON.stringify(result.accessToken))
+        if(typeof window !== "undefined"){
+
+          localStorage.setItem('user', JSON.stringify(result.data))
+          localStorage.setItem('token', JSON.stringify(result.accessToken))
+        }
         dispatch(userAdded(result.data))
-        router.push('/')
+        if(typeof window !== "undefined"){
+  
+          router.push('/')
+        }
       }
      
     }

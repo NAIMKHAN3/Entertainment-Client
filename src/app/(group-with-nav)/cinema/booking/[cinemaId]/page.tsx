@@ -28,7 +28,10 @@ const BookingPage = ({params}:any) => {
             const {success, message} = await addBooking(data).unwrap();
             if(success){
                 toast.success(message)
-                router.push('/dashboard/my-booking')
+                if(typeof window !== "undefined"){
+  
+                    router.push('/dashboard/my-booking')
+                }
             }
             
            

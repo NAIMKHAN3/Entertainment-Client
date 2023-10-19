@@ -6,13 +6,15 @@ const ratingApi = apiSlice.injectEndpoints({
             query: (data) => ({
                 url: '/rating/create-rating',
                 method: "POST",
-                body: data
-            })
+                body: data,
+            }),
+            invalidatesTags:["rating"]
         }),
         getRatings: builder.query({
             query: () => ({
                 url: '/rating/get-ratings',
-            })
+            }),
+            providesTags:["rating"]
         }),
        
     })

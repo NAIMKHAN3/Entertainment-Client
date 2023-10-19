@@ -41,7 +41,10 @@ const EditFaq = ({ params }: any) => {
 
             if (success) {
                 toast.success(message)
-                router.push('/dashboard/all-faq')
+                if(typeof window !== "undefined"){
+  
+                    router.push('/dashboard/all-faq')
+                }
 
             }
 
