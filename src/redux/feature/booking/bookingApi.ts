@@ -56,8 +56,9 @@ const bookingApi = apiSlice.injectEndpoints({
             query: (id) => ({
                 url: `/booking/delete-booking/${id}`,
                 method: "DELETE",
-                invalidatesTags: ["booking"]
-            })
+               
+            }),
+            invalidatesTags: ["booking"]
         }),
     })
 })

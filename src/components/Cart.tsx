@@ -1,18 +1,33 @@
 import { useAddCartMutation } from '@/redux/feature/cart/cartApi';
+import { getInfoToLocal } from '@/share';
 import { ICinema } from '@/types/interface';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import React from 'react';
 import toast, { Toaster } from 'react-hot-toast';
+import { json } from 'stream/consumers';
 
 const Cart = ({ cinema }: { cinema: ICinema }) => {
     const [addCart] = useAddCartMutation();
+const router = useRouter()
+const token = getInfoToLocal('token')
+const user = getInfoToLocal('user')
 
     const addCartToDb = async (id: string) => {
         try {
-            const { success, message } = await addCart({ cenemaId: id }).unwrap()
-            if (success) {
-                toast.success(message)
+            if(!token){
+                if(typeof window !== "undefined"){
+                    router.push('/signin')
+                }
+            }else if(user?.role && user.role !== 'User'){
+                toast.error(`Your are ${user.role}`)
+            } else{
+                const { success, message } = await addCart({ cenemaId: id }).unwrap()
+                if (success) {
+                    toast.success(message)
+                }
             }
+            
         }
         catch (err: any) {
             toast.error(err?.data?.message)

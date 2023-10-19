@@ -7,6 +7,7 @@ import { useAppDispatch, useAppSelector } from '@/redux/hooks/hooks';
 import { removeUser, userAdded } from '@/redux/feature/auth/authSlice';
 import { getInfoToLocal } from '@/share';
 import { useGetUserByIdQuery } from '@/redux/feature/auth/authApi';
+import toast, { Toaster } from 'react-hot-toast';
 
 const MainNavbar = () => {
     const { email } = useAppSelector(state => state.auth)
@@ -17,6 +18,7 @@ const MainNavbar = () => {
    
     const logout = () => {
         dispatch(removeUser())
+        toast.success('Logout Success')
     }
     useEffect(()=>{
         if (!email && data?.data) {
@@ -25,6 +27,7 @@ const MainNavbar = () => {
     },[data])
     return (
         <div>
+            <Toaster />
             <div className='hidden lg:block'>
                 <div className='flex justify-between items-center px-24 mt-2 border py-2'>
                     <div className='flex items-center'>

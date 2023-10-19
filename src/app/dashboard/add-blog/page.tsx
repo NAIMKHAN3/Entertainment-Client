@@ -21,6 +21,7 @@ type Inputs = {
     address: string
 }
 const AddBlog = () => {
+    const router = useRouter()
     const [addBlog] = useAddBlogMutation()
     const [imagePost] = useImageUploadMutation()
     const { control, register, handleSubmit, watch, formState: { errors }, setValue } = useForm<Inputs>();
@@ -36,6 +37,10 @@ const AddBlog = () => {
                 const result = await addBlog(data).unwrap()
                 if (result?.success) {
                     toast.success(result?.message)
+                    if(typeof window !== "undefined"){
+  
+                        router.push('/dashboard/all-blog')
+                    }
                 }
             }
         }

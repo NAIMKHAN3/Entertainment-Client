@@ -28,6 +28,7 @@ type Inputs = {
     image: any
 }
 const AddCinema = () => {
+    const router = useRouter();
     const { data } = useGetCategoryQuery(undefined)
     const [imagePost] = useImageUploadMutation()
     const [addCinema] = useAddCinemaMutation()
@@ -46,6 +47,9 @@ const AddCinema = () => {
                 const result = await addCinema(data).unwrap()
                 if (result?.success) {
                     toast.success(result?.message)
+                    if(typeof window !== "undefined"){
+                        router.push('/dashboard/all-cinema')
+                    }
                 }
             }
 

@@ -8,7 +8,8 @@ const imageUploadApi = apiSlice.injectEndpoints({
                 url: "/file/upload",
                 method: "POST",
                  body:data,
-            })
+            }),
+            invalidatesTags: ["user", "blog", "cinema"]
         }),
     })
 })

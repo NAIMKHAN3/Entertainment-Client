@@ -60,7 +60,7 @@ const AllSuperAdmin = () => {
 
                     {
                         data?.data?.map((user:IUser,index:number) => <tr key={user.id}>
-                            <TableBody>{user.id}</TableBody>
+                            <TableBody>{index +1}</TableBody>
                             <TableBody>{user.name}</TableBody>
                             <TableBody>{user.email}</TableBody>
                             <TableBody>{user.contactNo}</TableBody>

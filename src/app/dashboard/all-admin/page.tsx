@@ -71,8 +71,8 @@ const AllAdmin = () => {
                             <TableBody>{user.contactNo}</TableBody>
                             <TableBody>{user.address}</TableBody>
                             <TableBody>{user.role}</TableBody>
-                            <TableBody><button className='bg-[#00246a] text-white px-3 py-1 rounded-md' onClick={()=>updateRole({id:user.id as string, body:"SuperAdmin"})}>Make Super Admin</button></TableBody>
-                            <TableBody><button className='bg-[#00246a] text-white px-3 py-1 rounded-md' onClick={()=>updateRole({id:user.id as string, body:"User"})}>Make User</button></TableBody>
+                            <TableBody><button className='bg-[#00246a] text-white px-3 py-1 rounded-md' onClick={()=>updateRole({id:user.id as string, body:"SuperAdmin"})}>SuperAdmin</button></TableBody>
+                            <TableBody><button className='bg-[#00246a] text-white px-3 py-1 rounded-md' onClick={()=>updateRole({id:user.id as string, body:"User"})}>User</button></TableBody>
                             <Link href={`/dashboard/profile/edit/${user.id}`}><TableBody><button className='bg-[#00246a] text-white px-3 py-1 rounded-md'>Edit</button></TableBody></Link>
                             <TableBody><button className='bg-red-700 text-white px-3 py-1 rounded-md' onClick={()=> userDelete(user.id as string)}>Delete</button></TableBody>
 

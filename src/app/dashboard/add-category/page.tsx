@@ -16,6 +16,7 @@ type Inputs = {
     name: string
 }
 const AddCategory = () => {
+    const router = useRouter()
     const [addCategory] = useAddCateogryMutation();
     const { control, register, handleSubmit, watch, formState: { errors }, setValue } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
@@ -24,6 +25,9 @@ const AddCategory = () => {
           const res = await addCategory(data).unwrap();
           if(res.success){
             toast.success('Category Added Successfull')
+            if(typeof window !== "undefined"){
+                router.push('/dashboard/all-category')
+            }
           } 
         }
         catch (err: any) {

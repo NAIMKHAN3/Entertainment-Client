@@ -7,6 +7,7 @@ import { getInfoToLocal } from '@/share';
 import { userAdded } from '@/redux/feature/auth/authSlice';
 import MobileSidebar from './MobileSidebar';
 import { useGetUserByIdQuery } from '@/redux/feature/auth/authApi';
+import {AiOutlineHome} from 'react-icons/ai'
 
 const Sidebar = () => {
     const { profileImg, name, role, email } = useAppSelector(state => state.auth)
@@ -76,7 +77,13 @@ const Sidebar = () => {
 
 
             </ul>
-            <Link href='/'><h1 className='mb-0'>Back To Home</h1></Link>
+
+            <Link href='/'>
+                <div className='flex justify-center items-center font-semibold gap-2 text-[#00246a] p-3'>
+                <span><AiOutlineHome/> </span>
+                <h1 className=''>Back To Home</h1>
+                </div>
+                </Link>
             </div>
             {/* <MobileSidebar/> */}
         </div>

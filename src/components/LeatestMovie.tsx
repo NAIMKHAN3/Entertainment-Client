@@ -7,7 +7,7 @@ import Cart from './Cart';
 const LeatestMovie = () => {
     const {data,isLoading} = useGetCinemaByLeatestQuery(undefined)
     if(isLoading){
-        return <h1 className='text-center font-semibold text-xl my-3'>Loading...</h1>
+        return <h1 className='text-center font-semibold my-3'>Loading...</h1>
     }
     return (
         <div>

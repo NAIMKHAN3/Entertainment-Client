@@ -3,7 +3,6 @@ import Cart from '@/components/Cart';
 import { useGetCinemaQuery } from '@/redux/feature/cinema/cinemaApi';
 import { ICinema } from '@/types/interface';
 import React, { useEffect, useState } from 'react';
-import { useFormState } from 'react-hook-form';
 import { MdOutlineArrowBackIosNew, MdOutlineArrowForwardIos } from 'react-icons/md'
 
 const Cinema = () => {
@@ -17,7 +16,6 @@ const Cinema = () => {
     const handlePageChange = (page: number) => {
         setCurrentPage(page);
     };
-    console.log(data?.meta?.totalPage, totalPages)
     const handlePreviousPage = () => {
         if (currentPage > 1) {
             setCurrentPage((prevPage) => prevPage - 1);
