@@ -3,8 +3,8 @@ import { apiSlice } from "@/redux/RootApi/apiSlice";
 const cinameApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getCinema: builder.query({
-            query: () => ({
-                url: "/cenema/get-cenema",
+            query: (data) => ({
+                url: `/cenema/get-cenema?page=${data.page}&size=${data.size}&search=${data.search}`,
             })
         }),
         getCinemaById: builder.query({
