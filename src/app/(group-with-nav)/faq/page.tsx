@@ -1,8 +1,10 @@
 "use client"
 import Accordion from '@/components/Accordion';
+import { useGetFaqQuery } from '@/redux/feature/faq/faqApi';
 import React from 'react';
 
 const FAQ = () => {
+  const { data } = useGetFaqQuery(undefined)
     let accordionData = [
         {
           titel: "When will my order ship?",
@@ -31,15 +33,12 @@ const FAQ = () => {
         },
       ];
     return (
-        <div className='p-3'>
-           <h1 className="text-3xl mt-7 font-dm font-bold text-center">
+        <div className='p-3 '>
+           <h1 className="text-3xl mt-7 font-dm font-semibold text-center">
           GENERAL QUESTIONS
         </h1>
-        <p className="text-center mb-5 text-base text-[#6f6f6f]">
-          SHIPPING & PAYMENT INFORMATION
-        </p>
-        {accordionData.map((item) => (
-          <Accordion title={item.titel} content={item.content} />
+        {data?.data?.map((faq:any) => (
+          <Accordion title={faq.ques} content={faq.ans} />
         ))}
         </div>
     );

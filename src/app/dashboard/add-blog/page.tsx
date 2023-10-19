@@ -1,6 +1,8 @@
 "use client"
 import FormInput from '@/components/FormInput';
 import { useUserRegMutation } from '@/redux/feature/auth/authApi';
+import { useAddBlogMutation } from '@/redux/feature/blog/blogApi';
+import { useImageUploadMutation } from '@/redux/feature/imageUpload/imageUploadApi';
 import { useAppDispatch } from '@/redux/hooks/hooks';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
@@ -14,16 +16,28 @@ import { Toaster } from 'react-hot-toast'
 type Inputs = {
     contactNo: string
     password: string
-    name: string
+    image: string
     email: string
     address: string
 }
 const AddBlog = () => {
+    const [addBlog] = useAddBlogMutation()
+    const [imagePost] = useImageUploadMutation()
     const { control, register, handleSubmit, watch, formState: { errors }, setValue } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
-        console.log(data)
+        const { image, ...blogInfo } = data;
         try {
+            const formData = new FormData();
+            formData.append('image', image[0])
+            const { success, data: imageUrl } = await imagePost(formData).unwrap();
+            if (success) {
 
+                data.image = imageUrl
+                const result = await addBlog(data).unwrap()
+                if (result?.success) {
+                    toast.success(result?.message)
+                }
+            }
         }
         catch (err: any) {
             toast.error(err?.data?.message, { id: 'Signup' })
@@ -43,7 +57,7 @@ const AddBlog = () => {
 
 
                 <div className='flex justify-between items-center'>
-                    <input type="file" className='border w-full' />
+                <FormInput register={register} type='file' name='image' lebel='Blog Image' />
                     <button className='w-full bg-[#00246a] px-5 text-white py-1.5 ml-5 rounded-md' type="submit">Submit</button>
                 </div>
 
