@@ -27,7 +27,7 @@ const MobileNavbar = () => {
     };
     return (
         <>
-            <div className="lg:hidden flex items-center justify-between mx-5 py-2 transition duration-700">
+            <div className="lg:hidden bg-gray-200 mt-2 px-5 flex items-center justify-between py-2 transition duration-700">
                 <div className="flex justify-center items-center">
                     <Link href='/'>
                         <div className='flex items-center'>
@@ -36,13 +36,11 @@ const MobileNavbar = () => {
                         </div>
                     </Link>
                 </div>
-                <div>
-                    <input className='py-1 w-2/3 px-2 rounded-full border ml-7' type="text" placeholder='Search Cinema' />
-                </div>
+                
 
                 <div>
                     <p
-                        className="flex justify-center items-center bg-white px-2 py-1 text-primary rounded cursor-pointer"
+                        className="flex justify-center items-center px-2 py-1 text-primary rounded cursor-pointer"
                         onClick={toggleIsOpen}
                     >
                         <span>
@@ -64,12 +62,13 @@ const MobileNavbar = () => {
                     <div className='text-white'>
                         <Link href='/'><Paragraph className={" mt-5"}> <span className='hover:bg-white font-semibold hover:text-[#0874c4] duration-300 cursor-pointer px-5 py-2 rounded-md' onClick={toggleIsOpen}>Home</span> </Paragraph></Link>
                         <Link href='/cinema'><Paragraph className={"mt-5"}><span className='hover:bg-white font-semibold hover:text-[#0874c4] duration-300 cursor-pointer px-5 py-2 rounded-md' onClick={toggleIsOpen}>Cinema</span> </Paragraph></Link>
+                        <Link href='/blog'><Paragraph className={"mt-5"}><span className='hover:bg-white font-semibold hover:text-[#0874c4] duration-300 cursor-pointer px-5 py-2 rounded-md' onClick={toggleIsOpen}>Blog</span> </Paragraph></Link>
                         <Link href='/about'><Paragraph className={"mt-5"}><span className='hover:bg-white font-semibold hover:text-[#0874c4] duration-300 cursor-pointer px-5 py-2 rounded-md' onClick={toggleIsOpen}>About</span> </Paragraph></Link>
                         <Link href='/faq'><Paragraph className={"mt-5"}><span className='hover:bg-white font-semibold hover:text-[#0874c4] duration-300 cursor-pointer px-5 py-2 rounded-md' onClick={toggleIsOpen}>FAQ</span> </Paragraph></Link>
                         {
                             email ? <>
                                 
-                                <Link href='/wishlist'><Paragraph className={"mt-5"}><span className='hover:bg-white font-semibold hover:text-[#0874c4] duration-300 cursor-pointer px-5 py-2 rounded-md' onClick={toggleIsOpen}>Dashboard</span></Paragraph></Link>
+                                <Link href='/dashboard/profile'><Paragraph className={"mt-5"}><span className='hover:bg-white font-semibold hover:text-[#0874c4] duration-300 cursor-pointer px-5 py-2 rounded-md' onClick={toggleIsOpen}>Dashboard</span></Paragraph></Link>
                                 <button onClick={handleLogout} className={"mr-5 font-semibold hover:bg-[#0874c4] mt-5 border border-[#0874c4] duration-300 text-[#0874c4] bg-white hover:text-white px-4 py-2 rounded-md"}>Log out</button>
                             </>
                                 : <>

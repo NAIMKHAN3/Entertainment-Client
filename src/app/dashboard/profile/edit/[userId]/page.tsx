@@ -104,7 +104,7 @@ const EditProfile = ({ params }: any) => {
                     <div className='w-full flex flex-col'>
                         <label htmlFor="" className='font-semibold'>Image</label>
                         {/* @ts-ignore */}
-                        <input className='border my-2 px-2 py-1' type="file" onChange={(e) => setImage(e.target?.files[0])} />
+                        <input className='border my-2 px-2 py-1 w-full' type="file" onChange={(e) => setImage(e.target?.files[0])} />
                     </div>
                 </div>
                 <button className=' bg-[#00246a] text-white py-2 px-5 mt-5 rounded-md' type="submit">Update Profile</button>

@@ -42,7 +42,7 @@ const authSlice = createSlice({
       if (typeof window !== "undefined") {
         localStorage.removeItem('user')
         localStorage.removeItem('token')
-        
+        window.location.reload()
       }
 
     }

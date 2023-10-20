@@ -8,12 +8,12 @@ const Profile = () => {
     return (
        <div>
         <h1 className='text-center font-semibold text-2xl mt-5'>My Profile</h1>
-         <div className='mt-10 grid grid-cols-2 p-3 gap-5'>
+         <div className='mt-10 grid grid-cols-1 lg:grid-cols-2 p-3 gap-5'>
             <img className='h-72 w-full border' src={profileImg as string} alt="" />
             <div className='w-full border h-full p-3'>
-                <div className='flex justify-end'>
+                <div className='flex flex-col lg:flex-row justify-end'>
                     <div>
-                    <Link href={`/dashboard/profile/edit/${id}`}><button className='bg-[#00246a] mr-3 text-white px-3 py-1 rounded-md'>Edit Profile</button></Link>
+                    <Link href={`/dashboard/profile/edit/${id}`}><button className='bg-[#00246a] mr-3 text-white px-3 py-1 rounded-md my-2'>Edit Profile</button></Link>
                     <Link href={`/dashboard/profile/change-password/${id}`}><button className='bg-[#00246a] mr-3 text-white px-3 py-1 rounded-md'>Change Password</button></Link>
                     
                     </div>

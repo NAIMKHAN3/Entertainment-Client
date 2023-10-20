@@ -1,18 +1,28 @@
+"use client"
 import { apiSlice } from "@/redux/RootApi/apiSlice";
+import { getInfoToLocal } from "@/share";
+
+let token = getInfoToLocal('token')
 
 const cartApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getCart: builder.query({
             query: () => ({
                 url: "/cart/get-cart",
-                method: "GET"
+                method: "GET",
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                  },
             }),
             providesTags: ["cart"]
         }),
         deleteCart: builder.mutation({
             query: (id) => ({
                 url: `/cart/delete-cart/${id}`,
-                method: "DELETE"
+                method: "DELETE",
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                  },
             }),
             invalidatesTags: ["cart"]
         }),
@@ -20,7 +30,10 @@ const cartApi = apiSlice.injectEndpoints({
             query: (data) => ({
                 url: "/cart/create-cart",
                 method: "POST",
-                body: data
+                body: data,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                  },
             }),
             invalidatesTags: ["cart"]
         }),

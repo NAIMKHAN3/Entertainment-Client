@@ -44,7 +44,7 @@ const BookingPage = ({params}:any) => {
         return <h1 className='text-center mt-10'>Loading...</h1>
     }
     return (
-        <div className='w-full lg:w-1/2 mx-auto border p-5 mt-10 rounded-md'>
+        <div className='w-full lg:w-1/2 mx-auto border m-3 p-5 mt-10 rounded-md'>
         <Toaster />
         <h1 className='text-center font-semibold text-2xl'>Booking Form</h1>
         <h1 className='text-center font-semibold text-xl my-3'>Movie Name : {data?.data?.name}</h1>

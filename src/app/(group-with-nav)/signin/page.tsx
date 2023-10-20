@@ -36,13 +36,15 @@ const Signin = () => {
         }
         dispatch(userAdded(result.data))
         if (typeof window !== "undefined") {
+          //@ts-ignore
+          // router.replace(router?.asPath);
           router.push('/')
         }
       }
 
     }
     catch (err: any) {
-      console.log(err?.data.message)
+      console.log(err?.data?.message)
       toast.error(err?.data?.message, { id: 'Signin' })
     }
   }

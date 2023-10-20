@@ -1,16 +1,26 @@
+"use client"
 import { apiSlice } from "@/redux/RootApi/apiSlice";
+import { getInfoToLocal } from "@/share";
+
+let token = getInfoToLocal('token')
 
 const faqApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         getBlog: builder.query({
             query: () => ({
                 url: "/blog/get-blog",
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                  },
             }),
             providesTags: ["blog"]
         }),
         getBlogById: builder.query({
             query: (id) => ({
                 url: `/blog/get-blog-by-id/${id}`,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                  },
             }),
             providesTags: ["blog"]
         }),
@@ -18,7 +28,10 @@ const faqApi = apiSlice.injectEndpoints({
             query: (data) => ({
                 url: "/blog/create-blog",
                 method: "POST",
-                body: data
+                body: data,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                  },
             }),
             invalidatesTags: ["blog"]
         }),
@@ -26,7 +39,10 @@ const faqApi = apiSlice.injectEndpoints({
             query: (data) => ({
                 url: `/blog/update-blog/${data.id}`,
                 method: "PUT",
-                body: data?.data
+                body: data?.data,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                  },
             }),
             invalidatesTags: ["blog"]
         }),
@@ -34,6 +50,9 @@ const faqApi = apiSlice.injectEndpoints({
             query: (id) => ({
                 url: `/blog/delete-blog/${id}`,
                 method: "DELETE",
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                  },
             }),
             invalidatesTags: ["blog"]
         }),

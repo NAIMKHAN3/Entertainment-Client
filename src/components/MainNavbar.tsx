@@ -28,14 +28,11 @@ const MainNavbar = () => {
     return (
         <div>
             <Toaster />
-            <div className='hidden lg:block'>
+            <div className='hidden lg:block bg-gray-200'>
                 <div className='flex justify-between items-center px-24 mt-2 border py-2'>
                     <div className='flex items-center'>
                         <img className='h-12 w-12' src="https://wop-files.s3.us-west-2.amazonaws.com/cinema-logo.png" alt="" />
                         <h1 className='text-xl font-semibold uppercase ml-2 text-[#00246a]'>Entertainment Hall</h1>
-                    </div>
-                    <div>
-                        <input className='py-2 px-3 w-full rounded-full border' type="text" placeholder='Search Cinema' />
                     </div>
                     <div>
                         <ul className='flex justify-between items-center'>

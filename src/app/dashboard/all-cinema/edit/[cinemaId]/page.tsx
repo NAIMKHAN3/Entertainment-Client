@@ -75,7 +75,7 @@ const EditCinema = ({ params }: any) => {
                     <FormInput defaultValue={name} register={register} type='text' name='name' lebel='Movie Name' placeholder='movie name' />
                     <FormInput defaultValue={producerName} register={register} type='text' name='producerName' lebel='Producer Name' placeholder='producer name' />
                 </div>
-                <div className='flex justify-between items-center'>
+                <div className='grid grid-cols-2 gap-3'>
                     <FormInput defaultValue={productionManager} register={register} type='text' name='productionManager' lebel='Production Manager' placeholder='production manaer' />
                     <div className='w-full flex flex-col'>
                         <label htmlFor="" className='font-semibold'>Image</label>

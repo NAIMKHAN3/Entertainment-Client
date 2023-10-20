@@ -3,7 +3,7 @@ import { AiOutlineMenu, } from 'react-icons/ai';
 
 import { ImCross } from 'react-icons/im';
 
-
+import {AiOutlineHome} from 'react-icons/ai'
 import { useState } from 'react';
 // import { useAppDispatch, useAppSelector } from '../redux/hook';
 // import { removeUser } from '../redux/user/userSlice';
@@ -27,10 +27,10 @@ const MobileSidebar = () => {
 const dispatch = useAppDispatch()
     return (
         <>
-            <div className="lg:hidden flex items-center justify-between mx-5 py-2 transition duration-700">
+            <div className="lg:hidden bg-gray-200 flex items-center justify-between p-3 py-2 transition duration-700">
                 <div>
                     <p
-                        className="flex justify-center items-center bg-white px-2 py-1 text-primary rounded cursor-pointer"
+                        className="flex justify-center items-center  px-2 py-1 text-primary rounded cursor-pointer"
                         onClick={()=> dispatch(sidebarTrue())}
                     >
                         <span>
@@ -57,38 +57,57 @@ const dispatch = useAppDispatch()
             <h1 className='text-center text-xs font-semibold border-b-2 pb-5 text-[#00246a]'>{role} Dashboard</h1>
 
             <ul className='my-5'>
-                <List className='border pl-3 py-1'>My Profile</List>
+            <Link href='/dashboard/profile'  onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>My Profile</List></Link>
                 {
                     role === 'SuperAdmin' && <div>
-                        <Link href='/dashboard/add-admin'><List className='border pl-3 py-1'>Add Admin</List></Link>
-                        <Link href='/dashboard/add-cinema'><List className='border pl-3 py-1'>Add Cinema</List></Link>
-                        <Link href='/dashboard/add-category'><List className='border pl-3 py-1'>Add Category</List></Link>
-                        <Link href='/dashboard/add-faq'><List className='border pl-3 py-1'>Add FAQ</List></Link>
-                        <List className='border pl-3 py-1'>FAQ</List>
-                        <Link href='/dashboard/add-blog'><List className='border pl-3 py-1'>Add Blog</List></Link>
-                        <List className='border pl-3 py-1'>All Blog</List>
-                        <Link href='/dashboard/all-user'><List className='border pl-3 py-1'>All User</List></Link>
+                        <Link href='/dashboard/add-admin' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>Add Admin</List></Link>
+                        <Link href='/dashboard/all-admin' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>All Admin</List></Link>
+                        <Link href='/dashboard/add-cinema' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>Add Cinema</List></Link>
+                        <Link href='/dashboard/all-cinema' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>All Cinema</List></Link>
+                        <Link href='/dashboard/add-category' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>Add Category</List></Link>
+                        <Link href='/dashboard/all-category' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>All Category</List></Link>
+                        <Link href='/dashboard/add-faq' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>Add FAQ</List></Link>
+                        <Link href="/dashboard/all-faq" onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>All FAQ</List></Link>
+                        <Link href='/dashboard/add-blog' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>Add Blog</List></Link>
+                        <Link href='/dashboard/all-blog' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>All Blog</List></Link>
+                        <Link href='/dashboard/all-user' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>All User</List></Link>
+                        <Link href='/dashboard/all-super-admin' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>All Super Admin</List></Link>
+                        <Link href='/dashboard/all-booking' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>All Booking</List></Link>
                     </div>
                 }
                 {
                     role === 'User' && <div>
-                        <List className='border pl-3 py-1'>Cart list</List>
-                        <List className='border pl-3 py-1'>Booking list</List>
+                        <Link href='/dashboard/my-cart'  onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>My Cart List</List></Link>
+                        <Link href='/dashboard/my-booking'  onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>My Booking List</List></Link>
                     </div>
                 }
                 {
                     role === 'Admin' && <div>
-                        <List className='border pl-3 py-1'>Add User</List>
-                        <Link href='/dashboard/all-user'><List className='border pl-3 py-1'>All User</List></Link>
-                        <List className='border pl-3 py-1'>Add Cinema</List>
-                        <List className='border pl-3 py-1'>All Cinema</List>
+                       <Link href='/dashboard/add-admin' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>Add Admin</List></Link>
+                        <Link href='/dashboard/all-admin' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>All Admin</List></Link>
+                        <Link href='/dashboard/add-cinema' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>Add Cinema</List></Link>
+                        <Link href='/dashboard/all-cinema' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>All Cinema</List></Link>
+                        <Link href='/dashboard/add-category' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>Add Category</List></Link>
+                        <Link href='/dashboard/all-category' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>All Category</List></Link>
+                        <Link href='/dashboard/add-faq' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>Add FAQ</List></Link>
+                        <Link href="/dashboard/all-faq" onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>All FAQ</List></Link>
+                        <Link href='/dashboard/add-blog' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>Add Blog</List></Link>
+                        <Link href='/dashboard/all-blog' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>All Blog</List></Link>
+                        <Link href='/dashboard/all-user' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>All User</List></Link>
+                        <Link href='/dashboard/all-super-admin' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>All Super Admin</List></Link>
+                        <Link href='/dashboard/all-booking' onClick={()=> dispatch(sidebarFalse())}><List className='border pl-3 py-1'>All Booking</List></Link>
                     </div>
                 }
 
 
 
             </ul>
-            <Link href='/'><h1 className='mb-0'>Back To Home</h1></Link>
+            <Link href='/'>
+                <div className='flex justify-center items-center font-semibold gap-2 text-[#00246a] p-3'>
+                <span><AiOutlineHome/> </span>
+                <h1 className=''>Back To Home</h1>
+                </div>
+                </Link>
             </div>
                 </div>
             </div>

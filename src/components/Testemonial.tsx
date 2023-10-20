@@ -1,7 +1,7 @@
 "use client";
 // Import Swiper React components
 import { Swiper, SwiperSlide, useSwiper } from "swiper/react";
-import { Navigation } from "swiper/modules";
+import {Autoplay, Navigation } from "swiper/modules";
 
 // Import Swiper styles
 import "swiper/css";
@@ -41,6 +41,12 @@ export default function TestimonialCarousel() {
             slidesPerView={"auto"}
             spaceBetween={30}
             pagination={true}
+            autoplay={{
+                delay: 3000,
+                disableOnInteraction: true,
+              }}
+              loop={true}
+            modules={[Navigation, Autoplay]}
             breakpoints={{
                 640: {
                     slidesPerView: 1,
@@ -55,14 +61,14 @@ export default function TestimonialCarousel() {
                     spaceBetween: 20,
                 },
             }}
-            modules={[Navigation]}
-            className="w-full h-full flex flex-col"
+           
+            className="max-w-6xl mx-auto h-full flex flex-col"
         >
             {
                 data?.data?.map((rating: any) => <SwiperSlide key={rating.id}>
-                <div className="container px-5 md:px-10 py-10 mx-auto ">
+                <div className="container py-10 mx-auto ">
                     <div className="flex flex-wrap -m-4">
-                        <div className="p-4 w-full h-80">
+                        <div className="p-4 w-full">
                             <div className="h-full bg-gray-100 shadow-lg  p-8 rounded border-r-2 border-[#00246a]">
                                 <svg
                                 
@@ -82,7 +88,7 @@ export default function TestimonialCarousel() {
                                         height={30}
                                         alt="testimonial"
                                         src={rating?.user?.profileImg}
-                                        className="w-12 h-12 rounded-full flex-shrink-0 object-cover object-center"
+                                        className="w-12 h-12 rounded-full flex-shrink-0 object-cover border border-[#00246a] p-2 object-center"
                                     />
                                     <span className="flex-grow flex flex-col pl-4">
                                         <p className="text-primary font-inter border-none text-sm text-right font-bold flex items-center gap-2 ">
@@ -105,10 +111,10 @@ export default function TestimonialCarousel() {
             }
 
 
-            <div className="flex items-center justify-end gap-5 mb-5 pr-5 md:pr-10">
+            {/* <div className="flex items-center justify-end gap-5 mb-5 pr-5 md:pr-10">
                 <SwiperButtonPrev />
                 <SwiperButtonNext />
-            </div>
+            </div> */}
         </Swiper>
         </>
     );

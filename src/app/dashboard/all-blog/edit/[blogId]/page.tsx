@@ -69,7 +69,7 @@ const EditBlog = ({ params }: any) => {
     return (
         <div className='w-full mx-auto border p-5 mt-10 rounded-md'>
             <Toaster />
-            <h1 className='text-center font-semibold text-2xl'>Update Cinema</h1>
+            <h1 className='text-center font-semibold text-2xl'>Update Blog</h1>
             <form onSubmit={handleSubmit(onSubmit)}>
                 <div className='flex justify-between items-center'>
                     <FormInput defaultValue={title} register={register} type='text' name='title' lebel='Blog Title' placeholder='title' />

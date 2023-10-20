@@ -1,4 +1,8 @@
+"use client"
 import { apiSlice } from "@/redux/RootApi/apiSlice";
+import { getInfoToLocal } from "@/share";
+
+let token = getInfoToLocal('token')
 
 const authApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
@@ -6,7 +10,10 @@ const authApi = apiSlice.injectEndpoints({
             query: (data) => ({
                 method: 'POST',
                 url: '/auth/create-user',
-                body: data
+                body: data,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                  },
             }),
             invalidatesTags: ["user"]
         }),
@@ -14,7 +21,10 @@ const authApi = apiSlice.injectEndpoints({
             query: (data) => ({
                 method: 'POST',
                 url: '/auth/login-user',
-                body: data
+                body: data,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                  },
             }),
             invalidatesTags: ["user"]
         }),
@@ -22,35 +32,50 @@ const authApi = apiSlice.injectEndpoints({
             query: (data) => ({
                 method: 'POST',
                 url: '/auth/change-password',
-                body: data
+                body: data,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                  },
             }),
             invalidatesTags: ["user"]
         }),
         allUser: builder.query({
             query: () => ({
                 method: 'GET',
-                url: '/super-admin/get-all-user'
+                url: '/super-admin/get-all-user',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                  },
             }),
             providesTags: ["user"]
         }),
         getUserById: builder.query({
             query: (id) => ({
                 method: 'GET',
-                url: `/user/get-profile-by-id/${id}`
+                url: `/user/get-profile-by-id/${id}`,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                  },
             }),
             providesTags: ["user"]
         }),
         allAdmin: builder.query({
             query: () => ({
                 method: 'GET',
-                url: '/super-admin/get-all-admin'
+                url: '/super-admin/get-all-admin',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                  },
             }),
             providesTags: ["user"]
         }),
         allSuperAdmin: builder.query({
             query: () => ({
                 method: 'GET',
-                url: '/super-admin/get-all-super-admin'
+                url: '/super-admin/get-all-super-admin',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                  },
             }),
             providesTags: ["user"]
         }),
@@ -58,7 +83,10 @@ const authApi = apiSlice.injectEndpoints({
             query: (data) => ({
                 method: 'PUT',
                 url: `/user/update-profile/${data.id}`,
-                body: data.body
+                body: data.body,
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                  },
             }),
             invalidatesTags: ["user"]
         }),

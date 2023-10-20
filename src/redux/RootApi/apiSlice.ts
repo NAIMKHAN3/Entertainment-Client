@@ -6,9 +6,7 @@ import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
 import { useAppSelector } from '../hooks/hooks';
 
 let token = getInfoToLocal('token')
-if(!token){
-  token = getInfoToLocal('token')
-}
+
 
 const customBaseQuery = fetchBaseQuery({
   baseUrl: 'https://entertainment-movie-8x5iz31b0-naimkhan3.vercel.app/api/v1',

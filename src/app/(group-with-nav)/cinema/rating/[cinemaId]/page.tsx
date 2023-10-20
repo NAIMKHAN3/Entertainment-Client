@@ -3,6 +3,7 @@ import FormInput from '@/components/FormInput';
 import { useAddBookingMutation } from '@/redux/feature/booking/bookingApi';
 import { useGetCinemaByIdQuery } from '@/redux/feature/cinema/cinemaApi';
 import { useAddRatingMutation } from '@/redux/feature/rating/ratingApi';
+import { getInfoToLocal } from '@/share';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
@@ -23,9 +24,17 @@ const RatingPage = ({params}:any) => {
     const { control, register, handleSubmit, watch, formState: { errors }, setValue } = useForm<Inputs>();
     const onSubmit: SubmitHandler<Inputs> = async (data) => {
         data.cenemaId = cinemaId
-        console.log(data)
+        const token = getInfoToLocal('token')
+    const user = getInfoToLocal('user')
         try {
-            const {success, message} = await addRating(data).unwrap();
+            if(!token){
+                if(typeof window !== "undefined"){
+                    router.push('/signin')
+                }
+            }else if(user?.role && user.role !== 'User'){
+                toast.error(`Your are ${user.role}`)
+            } else{
+                const {success, message} = await addRating(data).unwrap();
             if(success){
                 toast.success(message)
                 if(typeof window !== "undefined"){
@@ -33,6 +42,8 @@ const RatingPage = ({params}:any) => {
                     router.push(`/cinema/${cinemaId}`)
                 }
             }
+            }
+            
             
            
         }
@@ -44,7 +55,7 @@ const RatingPage = ({params}:any) => {
         return <h1 className='text-center mt-10'>Loading...</h1>
     }
     return (
-        <div className='w-full lg:w-1/2 mx-auto border p-5 mt-10 rounded-md'>
+        <div className='w-full lg:w-1/2 mx-auto border m-3 p-5 mt-10 rounded-md'>
         <Toaster />
         <h1 className='text-center font-semibold text-2xl'>Rating Form</h1>
         <h1 className='text-center font-semibold text-xl my-3'>Movie Name : {data?.data?.name}</h1>

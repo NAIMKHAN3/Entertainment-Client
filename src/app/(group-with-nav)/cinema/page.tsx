@@ -45,7 +45,7 @@ const Cinema = () => {
     }
     return (
         <div className='max-w-6xl mx-auto'>
-            <div className='flex items-center mt-5 gap-5'>
+            <div className='flex px-3 items-center mt-5 gap-5'>
                 <div className="font-semibold">
                     Per Page
                     <select defaultValue={limit} onChange={(event) => handlePageLimit(event.target.value)} className="border-2 p-0.5 ml-2 rounded text-gray-800">
@@ -60,7 +60,7 @@ const Cinema = () => {
                     <input onChange={(e) => setSearch(e.target.value)} className='py-2 px-3 w-full rounded-full border' type="text" placeholder='Search Cinema' />
                 </div>
             </div>
-            <div className='grid grid-cols-1 my-10 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-6xl mx-auto'>
+            <div className='grid p-3 grid-cols-1 my-10 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-6xl mx-auto'>
                 {
                     data?.data?.map((cinema: ICinema) => <Cart key={cinema.id} cinema={cinema} />)
                 }
