@@ -1,5 +1,5 @@
 'use client'
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import List from './List';
 import Link from 'next/link';
 import MobileNavbar from './MobileNav';
@@ -10,21 +10,21 @@ import { useGetUserByIdQuery } from '@/redux/feature/auth/authApi';
 import toast, { Toaster } from 'react-hot-toast';
 
 const MainNavbar = () => {
-    const { email } = useAppSelector(state => state.auth)
+    const { email , name, profileImg } = useAppSelector(state => state.auth)
     const dispatch = useAppDispatch()
     const userInfo = getInfoToLocal('user')
     console.log(userInfo)
-    const {data} = useGetUserByIdQuery(userInfo?.id)
-   
+    const { data } = useGetUserByIdQuery(userInfo?.id)
+
     const logout = () => {
         dispatch(removeUser())
         toast.success('Logout Success')
     }
-    useEffect(()=>{
+    useEffect(() => {
         if (!email && data?.data) {
             dispatch(userAdded(data.data))
         }
-    },[data])
+    }, [data])
     return (
         <div>
             <Toaster />
@@ -45,6 +45,9 @@ const MainNavbar = () => {
                                 email ? <div className='flex items-center'>
                                     <Link href="/dashboard/profile"><List>Dashboard</List></Link>
                                     <List><button onClick={logout} className='bg-red-600 text-white px-3 py-1 rounded-md'>Logout</button></List>
+                                    {
+                                        profileImg ? <Link href="/dashboard/profile"><List><img className='w-12 h-12 rounded-full border p-1 border-[#00246a]' src={profileImg as string} alt="" /></List></Link> : null
+                                    }
                                 </div> :
                                     <Link href="/signin"><List>SignIn</List></Link>
                             }

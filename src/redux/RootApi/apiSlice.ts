@@ -1,9 +1,6 @@
-"use client"
-import {useEffect} from 'react'
-import { axiosBaseQuery } from '@/axios/axios';
 import { getInfoToLocal } from '@/share';
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { useAppSelector } from '../hooks/hooks';
+
 
 let token = getInfoToLocal('token')
 

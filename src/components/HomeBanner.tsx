@@ -54,14 +54,14 @@ const HomePageBanner = () => {
             }}
             loop={true}
             modules={[Navigation, Autoplay]}
-            className="mySwiper group mx-auto w-[100%]"
+            className="mySwiper mt-1 group mx-auto w-[100%]"
           >
             <SwiperSlide className="bg-[#EEEEEE] ">
               <div className="relative text-white">
                 <img
                   src="https://i.ytimg.com/vi/blIJLbU33Mw/maxresdefault.jpg"
                   alt=""
-                  className="h-[100vh] w-full"
+                  className="h-80 lg:h-[550px] w-full"
              
                 />
                 {/* <div className="absolute left-0 top-[30%] ml-14 w-[65%]">
@@ -88,10 +88,10 @@ const HomePageBanner = () => {
                 <img
                   src="https://www.koimoi.com/wp-content/new-galleries/2023/08/jailer-surpasses-rs-100-crore-on-opening-with-lifetime-gross-estimated-to-be-over-rs-500-crore.jpg"
                   alt=""
-                  className="h-[100vh] w-full"
+                  className="h-80 lg:h-[550px] w-full"
              
                 />
-                <div className="absolute left-0 top-[30%] ml-14 w-[65%]">
+                <div className="hidden lg:blockabsolute left-0 top-[30%] ml-14 w-[65%]">
                   <h3 className="font-bold md:text-[35px] lg:text-[50px]">
                     Meet The Line of <br />
                     The Millenninum
@@ -115,10 +115,10 @@ const HomePageBanner = () => {
                 <img
                   src="https://i.ytimg.com/vi/lshAqOT7BB8/sddefault.jpg"
                   alt=""
-                  className="h-[100vh] w-full"
+                  className=" h-80 lg:h-[550px] w-full"
                   width={undefined}
                 />
-                <div className="absolute left-0 top-[30%] ml-14 w-[65%]">
+                <div className="hidden lg:block absolute left-0 top-[30%] ml-14 w-[65%]">
                   <h3 className=" font-bold md:text-[35px] lg:text-[50px]">
                     New Moder <br />
                     Collection

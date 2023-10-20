@@ -1,8 +1,5 @@
-"use client"
-import { apiSlice } from "@/redux/RootApi/apiSlice";
-import { getInfoToLocal } from "@/share";
 
-let token = getInfoToLocal('token')
+import { apiSlice } from "@/redux/RootApi/apiSlice";
 
 const superAdminApi = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
@@ -11,9 +8,7 @@ const superAdminApi = apiSlice.injectEndpoints({
                 method: 'POST',
                 url: '/super-admin/create-admin',
                 body: data,
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                  },
+                 
             }),
             invalidatesTags: ["user"]
         }),
@@ -22,9 +17,7 @@ const superAdminApi = apiSlice.injectEndpoints({
                 method: 'PUT',
                 url: `/super-admin/role-update/${data.id}`,
                 body: {role: data.body},
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                  },
+                 
             }),
             invalidatesTags: ["user"]
         }),
@@ -32,9 +25,7 @@ const superAdminApi = apiSlice.injectEndpoints({
             query: (id) => ({
                 method: 'DELETE',
                 url: `/super-admin/user-delete/${id}`,
-                headers: {
-                    'Authorization': `Bearer ${token}`,
-                  },
+                 
             }),
             invalidatesTags: ["user"]
         }),
