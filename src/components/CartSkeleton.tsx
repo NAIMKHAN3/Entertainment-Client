@@ -2,9 +2,9 @@ import React from 'react';
 
 const CartSkeleton = () => {
     return (
-        <div className="border rounded-lg shadow-md p-4">
+        <div className="border  shadow-md p-4">
         <div className="animate-pulse">
-          <div className="h-48 bg-gray-300 rounded-lg mb-4"></div>
+          <div className="h-48 bg-gray-300  mb-4"></div>
           <div className="h-4 w-1/2 bg-gray-300 rounded mb-2"></div>
           <div className="flex justify-between items-center gap-5 mt-3">
             <div className="h-4 w-full bg-gray-300 rounded mb-2"></div>

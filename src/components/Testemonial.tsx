@@ -11,6 +11,7 @@ import { BiSolidStar } from "react-icons/bi"
 
 import Image from "next/image";
 import { useGetRatingsQuery } from "@/redux/feature/rating/ratingApi";
+import TestimonialSkeleton from "./TestimonialSkeleton";
 
 const SwiperButtonNext = () => {
     const swiper = useSwiper();
@@ -31,9 +32,7 @@ const SwiperButtonPrev = () => {
 
 export default function TestimonialCarousel() {
     const { data, isLoading } = useGetRatingsQuery(undefined)
-    if (isLoading) {
-        return <h1 className="text-center my-5 ">Loading...</h1>
-    }
+    
     return (
         <>
         <h1 className="uppercase text-center font-semibold text-3xl text-[#00246a] py-5">Reviews: {data?.data?.length}</h1>
@@ -65,7 +64,14 @@ export default function TestimonialCarousel() {
             className="max-w-6xl mx-auto h-full flex flex-col"
         >
             {
-                data?.data?.map((rating: any) => <SwiperSlide key={rating.id}>
+                isLoading ? <>
+                <SwiperSlide>
+                    <TestimonialSkeleton/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <TestimonialSkeleton/>
+                </SwiperSlide>
+                </> :  data?.data?.map((rating: any) => <SwiperSlide key={rating.id}>
                 <div className="container py-10 mx-auto ">
                     <div className="flex flex-wrap -m-4">
                         <div className="p-4 w-full">
@@ -108,6 +114,9 @@ export default function TestimonialCarousel() {
                     </div>
                 </div>
             </SwiperSlide>)
+            }
+            {
+               
             }
 
 
