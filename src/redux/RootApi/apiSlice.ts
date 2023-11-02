@@ -8,7 +8,7 @@ let token = getInfoToLocal('token')
 const customBaseQuery = fetchBaseQuery({
   baseUrl: 'https://entertainment-movie-8x5iz31b0-naimkhan3.vercel.app/api/v1',
   prepareHeaders(headers) {
-    headers.set('Authorization', `Bearer ${token}`);
+    headers.set('Authorization', `Bearer ${getInfoToLocal('token')}`);
     return headers;
   },
 });

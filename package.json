@@ -13,6 +13,8 @@
     "axios": "^1.5.1",
     "lottie-react": "^2.4.0",
     "next": "latest",
+    "next-images": "^1.8.5",
+    "next-pwa": "^5.6.0",
     "react": "latest",
     "react-countup": "^6.4.2",
     "react-dom": "latest",
@@ -26,6 +28,7 @@
     "swiper": "^10.3.1"
   },
   "devDependencies": {
+    "@types/next-pwa": "^5.6.8",
     "@types/node": "latest",
     "@types/react": "latest",
     "@types/react-dom": "latest",
