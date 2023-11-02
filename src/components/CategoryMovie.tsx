@@ -27,9 +27,6 @@ const CategoryMovie = () => {
                         <CartSkeleton />
                     </> : data?.data?.map((cinema: ICinema) => <Cart key={cinema.id} cinema={cinema} />)
                 }
-                {
-                    
-                }
             </div>
         </div>
     );

@@ -1,5 +1,6 @@
 "use client"
 import Cart from '@/components/Cart';
+import CartSkeleton from '@/components/CartSkeleton';
 import { useGetCinemaQuery } from '@/redux/feature/cinema/cinemaApi';
 import { ICinema } from '@/types/interface';
 import React, { useEffect, useState } from 'react';
@@ -35,14 +36,10 @@ const Cinema = () => {
    
     useEffect(() => {
         if (data?.meta?.totalPage > 0) {
-            console.log('Naim')
             setTotalPages(data.meta.totalPage)
         }
 
     }, [currentPage, limit, data?.meta, search]);
-    if (isLoading) {
-        return <h1 className='text-center font-semibold mt-5 text-xl'>Loading...</h1>
-    }
     return (
         <div className='max-w-6xl mx-auto'>
             <div className='flex px-3 items-center mt-5 gap-5'>
@@ -61,9 +58,16 @@ const Cinema = () => {
                 </div>
             </div>
             <div className='grid p-3 grid-cols-1 my-10 md:grid-cols-2 lg:grid-cols-3 gap-3 max-w-6xl mx-auto'>
-                {
-                    data?.data?.map((cinema: ICinema) => <Cart key={cinema.id} cinema={cinema} />)
+            {
+                    isLoading ? <>
+                        <CartSkeleton />
+                        <CartSkeleton />
+                        <CartSkeleton />
+                        <CartSkeleton />
+                        <CartSkeleton />
+                    </> : data?.data?.map((cinema: ICinema) => <Cart key={cinema.id} cinema={cinema} />)
                 }
+                
             </div>
             <div className="px-5 py-3 flex justify-end">
                 <nav>
