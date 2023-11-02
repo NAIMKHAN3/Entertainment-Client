@@ -32,7 +32,7 @@ const About = () => {
             </div>
           </div>
           <div className="my-20 p-3 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 max-w-screen-lg mx-auto">
-            <div className="text-center flex flex-col md:flex-row justify-center items-center hover:bg-[#00246a] hover:text-white duration-300 bg-yellow-100 rounded-tl-3xl rounded-br-3xl  py-3">
+            <div className="text-center flex flex-col md:flex-row justify-center items-center hover:bg-[#00246a] hover:text-white duration-300 bg-gray-100 rounded-tl-3xl rounded-br-3xl  py-3 cursor-pointer">
               <img className="w-36" src="https://i.ibb.co/GxccZsC/fpdl-in-3d-realistic-person-people-vector-illustration-156780-130-normal-removebg-preview.png" alt="" />
               <div>
               <h1 className="text-xl font-semibold">Our User</h1>
@@ -48,7 +48,7 @@ const About = () => {
               </p>
               </div>
             </div>
-            <div className="text-center flex flex-col md:flex-row justify-center items-center hover:bg-[#00246a] hover:text-white duration-300 bg-green-200 rounded-tl-3xl rounded-br-3xl py-3">
+            <div className="text-center flex flex-col md:flex-row justify-center items-center hover:bg-[#00246a] hover:text-white duration-300 bg-gray-100 rounded-tl-3xl rounded-br-3xl py-3 cursor-pointer">
               <img className="w-24" src="https://i.ibb.co/J5M6mKT/fpdl-in-bag-with-store-shape-inside-698903-4015-normal-removebg-preview.png" alt="" />
               <div>
               <h1 className="text-xl font-semibold">Our Theatre</h1>
@@ -64,7 +64,7 @@ const About = () => {
               </p>
               </div>
             </div>
-            <div className="text-center flex flex-col md:flex-row justify-center items-center hover:bg-[#00246a] hover:text-white duration-300 bg-gray-300 rounded-tl-3xl rounded-br-3xl py-3">
+            <div className="text-center flex flex-col md:flex-row justify-center items-center hover:bg-[#00246a] hover:text-white duration-300 bg-gray-100 rounded-tl-3xl rounded-br-3xl py-3 cursor-pointer">
               <img className="w-24" src="https://i.ibb.co/pbcRHgq/fpdl-in-cartoon-businessman-jumping-obstacle-business-concept-3d-illustration-764664-28624-normal-re.png" alt="" />
               <div>
               <h1 className="text-xl font-semibold">Our Buisness</h1>
@@ -140,7 +140,7 @@ const About = () => {
             <iframe
               width="80%"
               height="400"
-              src="https://www.youtube.com/embed/siftDMqiq-E"
+              src="https://www.youtube.com/embed/WsqnZvsBTQ0?si=pW2Z1cUD-akTVSIy"
               title="YouTube video player"
             //   frameborder="0"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
