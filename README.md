@@ -1,5 +1,9 @@
 # Entertainment-frontend
-superadmin email = super@gmail.com pass=123456 admin email = admin@gmail.com pass= 123456 user email = anamul@gmail.com pass = 123456
+
+* superadmin email:  super@gmail.com pass=123456 
+* admin email = admin@gmail.com pass= 123456 
+* user email = anamul@gmail.com pass = 123456
+
 # video no sound beacuse microphone issue 
 * loom link: https://www.loom.com/share/ac2acf1101ae4d5c92c1b5777f58151b
 
